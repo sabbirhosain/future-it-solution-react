@@ -22,10 +22,12 @@ import LiveSupport from "./Pages/Dashboard/LiveSupport"
 import "./App.css"
 import OrderConfirm from "./Pages/OrderConfirm/OrderConfirm"
 import MeetingSchedule from "./Pages/Dashboard/MeetingSchedule"
+import { ToastContainer } from "react-toastify"
 
 const App = () => {
   return (
     <>
+      <ToastContainer position="top-right" autoClose={1000} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

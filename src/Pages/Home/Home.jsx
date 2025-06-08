@@ -163,9 +163,6 @@ const Home = () => {
             <MeetOurClients />
             <MeetOurClients />
             <MeetOurClients />
-            <MeetOurClients />
-            <MeetOurClients />
-            <MeetOurClients />
           </div>
         </div>
       </section>
