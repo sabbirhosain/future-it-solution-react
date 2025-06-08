@@ -1,0 +1,94 @@
+.dashboard_section {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+}
+
+.dashboard_sidebar {
+    width: 100%;
+    height: 100vh;
+    padding: 20px 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.dashboard_sidebar_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: black;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: var(--primary-fonts);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    background-color: #fdfdfd;
+    margin: 0px;
+}
+
+.dashboard_sidebar>.active {
+    color: white !important;
+    background-color: var(--primary-color) !important;
+}
+
+.dashboard_card {
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: rgb(234, 248, 234);
+}
+
+.dashboard_card_title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--primary-color);
+    font-size: 22px;
+    font-weight: 500;
+    font-family: var(--secondary-fonts);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0px;
+}
+
+.dashboard_card_count {
+    color: black;
+    font-size: 50px;
+    font-weight: 500;
+    font-family: var(--primary-fonts);
+    margin: 0px;
+    padding: 10px 0;
+}
+
+.dashboard_card_meeting_counter {
+    color: black;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: var(--primary-fonts);
+    margin: 0px;
+    padding: 10px 0;
+}
+
+.dashboard_card_text {
+    color: black;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: italic;
+    font-family: var(--primary-fonts);
+    margin: 0px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+/* ====== Table Heading Style ======= */
+.rdt_TableHead,
+.rdt_TableHeadRow {
+    color: #223039 !important;
+    font-size: 14px !important;
+    text-transform: uppercase;
+    font-family: var(--primary-fonts);
+    letter-spacing: 1px;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: left;
+    background-color: #D7DFE9 !important;
+}

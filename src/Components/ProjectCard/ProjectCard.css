@@ -1,0 +1,98 @@
+.project_card_box {
+    width: 100%;
+    min-height: 350px;
+    max-height: 400px;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.project_text_box {
+    padding: 15px;
+    background-color: white;
+}
+
+.project_title {
+    display: block;
+    color: black;
+    font-weight: 400;
+    font-size: 25px;
+    font-family: var(--secondary-fonts);
+    letter-spacing: 1px;
+    margin: 0;
+    padding-bottom: 5px;
+    transition: all 1s ease-in-out;
+
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.project_peragraph {
+    color: black;
+    font-size: 16px;
+    font-family: var(--primary-fonts);
+    font-weight: 400;
+    display: block;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.project_card_img {
+    width: 100%;
+    max-height: 350px;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.project_card_img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.project_card_img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.project_card_img:hover::before {
+    opacity: 1;
+}
+
+.project_btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 2;
+    color: white;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-family: var(--primary-fonts);
+    padding: 7px 14px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all ease-in-out 0.3s;
+}
+
+.project_card_img:hover .project_btn {
+    opacity: 1;
+    visibility: visible;
+}

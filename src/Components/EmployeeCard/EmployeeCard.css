@@ -1,0 +1,52 @@
+.employee_card {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background-color: white;
+}
+
+.employee_img {
+    min-height: 250px;
+    max-height: 250px;
+    overflow: hidden;
+}
+
+.employee_card_info {
+    padding: 10px 10px 0 10px;
+}
+
+.employee_name {
+    color: black;
+    font-size: 20px;
+    font-family: var(--primary-fonts);
+    font-weight: 600;
+    display: block;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.employee_title {
+    color: black;
+    font-size: 14px;
+    font-family: var(--primary-fonts);
+    font-weight: 400;
+    display: block;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.employee_social_icon {
+    color: white;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.employee_social_name {
+    color: black;
+    font-size: 15px;
+    font-family: var(--primary-fonts);
+    font-weight: 400;
+}

@@ -1,0 +1,127 @@
+.countact_us {
+    background-color: #fdfdfd;
+    padding: 80px 0;
+}
+
+.section_tagline {
+    color: black;
+    font-size: 18px;
+    letter-spacing: 400;
+    font-family: var(--secondary-fonts);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section_tagline_icon {
+    color: var(--secondary-color);
+    font-size: 20px
+}
+
+.contact_title {
+    color: black;
+    font-size: 32px;
+    font-family: var(--primary-fonts);
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.contact_title_color {
+    color: var(--primary-color);
+}
+
+.form_label {
+    color: black;
+    font-size: 15px;
+    font-family: var(--primary-fonts);
+    text-transform: capitalize;
+}
+
+.form_control:focus {
+    box-shadow: none !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+.contact_submit_btn {
+    color: white;
+    font-size: 18px;
+    display: inline-block;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-family: var(--primary-fonts);
+    padding: 8px 16px 8px 16px;
+    text-decoration: none;
+    transition: all ease-in-out 0.3s;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    &:hover {
+        color: var(--primary-color);
+        background-color: transparent;
+        border: 1px solid var(--primary-color);
+    }
+}
+
+.contact_us_info_box {
+    padding: 50px;
+    background-color: var(--primary-color);
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.contact_info_title {
+    color: white;
+    font-size: 20px;
+    font-family: var(--primary-fonts);
+    text-transform: capitalize;
+    margin: 0 0 5px 0;
+}
+
+.contact_info_peragraph {
+    color: white;
+    font-size: 15px;
+    font-family: var(--primary-fonts);
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.social_media_box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact_social_media_box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+}
+
+.contact_social_media_icon {
+    color: white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid white;
+    transition: all ease-in-out 0.3s;
+
+    &:hover {
+        color: var(--primary-color);
+        background-color: white;
+    }
+}

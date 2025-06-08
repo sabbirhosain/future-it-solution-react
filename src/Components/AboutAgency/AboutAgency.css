@@ -1,0 +1,57 @@
+.section_tagline {
+    color: black;
+    font-size: 18px;
+    letter-spacing: 400;
+    font-family: var(--secondary-fonts);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section_tagline_icon {
+    color: var(--secondary-color);
+    font-size: 20px;
+}
+
+.about_agency_title {
+    color: black;
+    font-size: 38px;
+    font-family: var(--primary-fonts);
+    text-transform: capitalize;
+}
+
+.about_agency_title_color {
+    color: var(--primary-color);
+}
+
+.about_agency_paragraph {
+    color: black;
+    font-size: 17px;
+    font-weight: 300;
+    font-family: var(--primary-fonts);
+    margin: 0;
+    padding: 0;
+
+}
+
+.about_agency_counter_box {
+    padding: 15px 10px;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+}
+
+.about_agency_counter {
+    color: black;
+    font-size: 25px;
+    font-family: var(--secondary-fonts);
+}
+
+.about_agency_counter_title {
+    color: black;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: var(--primary-fonts);
+}

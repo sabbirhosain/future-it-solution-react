@@ -1,0 +1,124 @@
+.footer_section {
+    background-color: var(--primary-color);
+}
+
+.footer_logo_brand {
+    color: var(--primary-color);
+    width: 35px;
+    height: 35px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: var(--primary-fonts);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+}
+
+.footer_logo_text {
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: var(--primary-fonts);
+}
+
+.footer_peragraph {
+    color: white;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-transform: capitalize;
+    padding: 20px 0;
+    font-family: var(--primary-fonts);
+}
+
+.footer_social_media_box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+}
+
+.footer_social_media_box_icon {
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid white;
+    transition: all ease-in-out 0.3s;
+
+    &:hover {
+        color: var(--primary-color);
+        background-color: white;
+    }
+}
+
+.quick_view {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-family: var(--primary-fonts);
+    letter-spacing: 2px;
+    padding-bottom: 15px;
+}
+
+.footer_phone_icon {
+    color: white;
+    padding: 0;
+    font-size: 15px;
+    margin-top: -5px;
+}
+
+.footer_phone_text {
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: var(--primary-fonts);
+}
+
+.footer_email_icon {
+    color: white;
+    padding: 0;
+    font-size: 15px;
+    margin-top: -3px;
+}
+
+.footer_email_text {
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: var(--primary-fonts);
+}
+
+.footer_location_icon {
+    color: white;
+    padding: 0;
+    font-size: 15px;
+    margin-top: -3px;
+}
+
+.footer_location_text {
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: var(--primary-fonts);
+}
+
+.footer_copyright,
+.terms_condition {
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: var(--primary-fonts);
+    margin: 0px;
+    padding: 0px;
+}

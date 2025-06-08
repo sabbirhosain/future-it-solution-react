@@ -1,0 +1,99 @@
+.service_card_box {
+    width: 100%;
+    min-height: 500px;
+    max-height: 500px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.service_img_box {
+    width: 100%;
+    max-height: 200px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.service_discount {
+    color: white;
+    position: absolute;
+    font-size: 12px;
+    font-family: var(--primary-fonts);
+    font-weight: 400;
+    top: 10px;
+    left: 0;
+    background-color: var(--primary-color);
+    padding: 3px 6px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.service_text_box {
+    padding: 15px;
+    background-color: white;
+}
+
+.service_title {
+    display: block;
+    color: black;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: var(--secondary-fonts);
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+    transition: all 1s ease-in-out;
+
+    &:hover {
+        color: var(--primary-color);
+    }
+}
+
+.service_price {
+    color: black;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: var(--primary-fonts);
+    padding: 4px 10px;
+    background-color: var(--secondary-color);
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    letter-spacing: 1px;
+}
+
+.service_rating {
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 300;
+    font-family: var(--primary-fonts);
+    padding: 4px 10px;
+    background-color: var(--primary-color);
+    clip-path: polygon(10% 0, 100% 0%, 100% 100%, 0% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 5px;
+}
+
+.service_descrip {
+    color: black;
+    font-size: 15px;
+    font-family: var(--primary-fonts);
+    font-weight: 400;
+    display: block;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.service_tag {
+    padding: 0px 5px;
+    color: white;
+    font-size: 12px;
+    font-family: var(--primary-fonts);
+    font-weight: 400;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    border-radius: 50px;
+}
