@@ -9,13 +9,13 @@ import './Authentication.css'
 
 const Register = () => {
     const navigate = useNavigate();
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [country, setCountry] = useState('')
-    const [phone, setPhone] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [country, setCountry] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [fieldError, setFieldError] = useState({});
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
@@ -42,10 +42,9 @@ const Register = () => {
                 password: password,
                 confirm_password: confirmPassword
             });
-            console.log(response);
 
             if (response && response.data) {
-                toast.success(response.data.message || 'Register Success');
+                // toast.success(response.data.message || 'Register Success');
                 window.confirm(response.data.message || 'Please check your email to verify your account.');
                 navigate('/login');
             }
