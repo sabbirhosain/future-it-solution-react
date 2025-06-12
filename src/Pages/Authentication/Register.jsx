@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 import axios from "axios";
 import { register } from "../../Context/Base_Api_Url";
-import { toast } from "react-toastify";
 import './Authentication.css'
 
 const Register = () => {

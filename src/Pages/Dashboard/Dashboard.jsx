@@ -61,7 +61,7 @@ const Dashboard = () => {
                 <div className="col-md-3 mb-4">
                   <div className='dashboard_card'>
                     <h6 className='dashboard_card_title'><SiGooglemeet />Meeting Schedule</h6>
-                    <h1 className='dashboard_card_meeting_counter'>02 : 04 : 20 : 21</h1>
+                    <h1 className='dashboard_card_meeting_counter'>02 : 04 : 06 : 08</h1>
                     <span className='dashboard_card_text'>Your Local Time</span>
                   </div>
                 </div>
