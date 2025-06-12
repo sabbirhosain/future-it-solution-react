@@ -82,7 +82,40 @@ const Appointment = () => {
               <div className="row px-3">
                 <div className="col-md-12 mb-3">
                   <label className='form-label'>Your Time Zone</label>
-                  <input className="form-control rounded-0" type="text" placeholder='GMT Time' />
+                  <select class="form-select rounded-0">
+                    <option selected>Open this select menu</option>
+                    <option value="-12">GMT -12:00 - UTC -12</option>
+                    <option value="-11">GMT -11:00 - UTC -11</option>
+                    <option value="-10">GMT -10:00 - UTC -10</option>
+                    <option value="-9">GMT -09:00 - UTC -9</option>
+                    <option value="-8">GMT -08:00 - UTC -8</option>
+                    <option value="-7">GMT -07:00 - UTC -7</option>
+                    <option value="-6">GMT -06:00 - UTC -6</option>
+                    <option value="-5">GMT -05:00 - UTC -5</option>
+                    <option value="-4">GMT -04:00 - UTC -4</option>
+                    <option value="-3">GMT -03:00 - UTC -3</option>
+                    <option value="-2">GMT -02:00 - UTC -2</option>
+                    <option value="-1">GMT -01:00 - UTC -1</option>
+                    <option value="0">GMT +00:00 - UTC +0</option>
+                    <option value="1">GMT +01:00 - UTC +1</option>
+                    <option value="2">GMT +02:00 - UTC +2</option>
+                    <option value="3">GMT +03:00 - UTC +3</option>
+                    <option value="4">GMT +04:00 - UTC +4</option>
+                    <option value="5">GMT +05:00 - UTC +5</option>
+                    <option value="6">GMT +06:00 - UTC +6</option>
+                    <option value="7">GMT +07:00 - UTC +7</option>
+                    <option value="8">GMT +08:00 - UTC +8</option>
+                    <option value="9">GMT +09:00 - UTC +9</option>
+                    <option value="10">GMT +10:00 - UTC +10</option>
+                    <option value="11">GMT +11:00 - UTC +11</option>
+                    <option value="12">GMT +12:00 - UTC +12</option>
+                    <option value="13">GMT +13:00 - UTC +13</option>
+                    <option value="14">GMT +14:00 - UTC +14</option>
+                  </select>
+                </div>
+                <div className="col-md-12 mb-4">
+                  <label className='form-label'>Bangladesh Time Zone</label>
+                  <input className='form-control rounded-0' placeholder='00 : 00 : 00 AM/PM' readOnly/>
                 </div>
                 <div className="col-md-12 mb-3">
                   <label className='form-label'>Choose which language you want to speak?</label>
