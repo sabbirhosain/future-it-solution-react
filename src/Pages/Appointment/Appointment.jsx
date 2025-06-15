@@ -8,6 +8,11 @@ import host_img from '../../assets/user_image.png'
 import './Appointment.css'
 
 const Appointment = () => {
+  // select date
+  const [dateSelect, setDateSelect] = useState(new Date());
+  const today = new Date();
+  const sevenDaysFromToday = new Date();
+  sevenDaysFromToday.setDate(today.getDate() + 6);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,14 +34,6 @@ const Appointment = () => {
       </div>
     );
   }
-
-
-
-  // select date
-  const [dateSelect, setDateSelect] = useState(new Date());
-  const today = new Date();
-  const sevenDaysFromToday = new Date();
-  sevenDaysFromToday.setDate(today.getDate() + 6);
 
   return (
     <Layout>
