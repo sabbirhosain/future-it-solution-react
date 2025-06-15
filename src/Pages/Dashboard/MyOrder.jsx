@@ -32,7 +32,7 @@ const MyOrder = () => {
         );
     }
     return (
-        <Layout>
+        <Layout title='Order'>
             <section className='dashboard_section'>
                 <div className="container-fluid">
                     <div className="row">

@@ -30,7 +30,7 @@ const Contact = () => {
         );
     }
     return (
-        <Layout>
+        <Layout title='Contact'>
             <section className='countact_us'>
                 <div className="container">
                     <div className="row align-items-center justify-content-between">

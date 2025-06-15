@@ -36,7 +36,7 @@ const Appointment = () => {
   }
 
   return (
-    <Layout>
+    <Layout title='Appointment'>
       <section className='appointment_section'>
         <div className="container">
           <form className="row border py-3">

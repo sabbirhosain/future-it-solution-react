@@ -31,7 +31,7 @@ const Profile = () => {
         );
     }
     return (
-        <Layout>
+        <Layout title='Profile'>
             <section className='dashboard_section'>
                 <div className="container-fluid">
                     <div className="row">

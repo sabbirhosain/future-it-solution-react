@@ -31,7 +31,7 @@ const LiveSupport = () => {
         );
     }
     return (
-        <Layout>
+        <Layout title='Live Support'>
             <section className='dashboard_section'>
                 <div className="container-fluid">
                     <div className="row">

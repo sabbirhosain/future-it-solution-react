@@ -31,7 +31,7 @@ const Reports = () => {
         );
     }
     return (
-        <Layout>
+        <Layout title='Reports'>
             <section className='dashboard_section'>
                 <div className="container-fluid">
                     <div className="row">

@@ -27,7 +27,7 @@ const PremiumTools = () => {
     );
   }
   return (
-    <Layout>
+    <Layout title='Premium Tools'>
       <section className='page_heading_bg'>
         <div className="container">
           <div className="row align-items-center justify-content-center">

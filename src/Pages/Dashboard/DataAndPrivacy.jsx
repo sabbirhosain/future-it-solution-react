@@ -31,7 +31,7 @@ const DataAndPrivacy = () => {
         );
     }
     return (
-        <Layout>
+        <Layout title='Data And Privacy'>
             <section className='dashboard_section'>
                 <div className="container-fluid">
                     <div className="row">

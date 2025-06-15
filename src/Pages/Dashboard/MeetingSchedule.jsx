@@ -33,7 +33,7 @@ const MeetingSchedule = () => {
     }
 
     return (
-        <Layout>
+        <Layout title='Meeting Schedule'>
             <section className='dashboard_section'>
                 <div className="container-fluid">
                     <div className="row">
