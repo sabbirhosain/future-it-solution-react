@@ -8,6 +8,30 @@ import host_img from '../../assets/user_image.png'
 import './Appointment.css'
 
 const Appointment = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      setLoading(false);
+    } else {
+      const handleLoad = () => setLoading(false);
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
+    }
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="spinner-grow text-success" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
+
+
   // select date
   const [dateSelect, setDateSelect] = useState(new Date());
   const today = new Date();

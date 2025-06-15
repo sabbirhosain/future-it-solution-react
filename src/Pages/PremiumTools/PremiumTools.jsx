@@ -2,8 +2,30 @@ import PremiumToolsCard from '../../Components/PremiumToolsCard/PremiumToolsCard
 import Layout from '../../Layout/Layout'
 import { IoCheckmarkDoneOutline } from 'react-icons/io5';
 import './PremiumTools.css';
+import { useEffect, useState } from 'react';
 
 const PremiumTools = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      setLoading(false);
+    } else {
+      const handleLoad = () => setLoading(false);
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
+    }
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="spinner-grow text-success" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <Layout>
       <section className='page_heading_bg'>

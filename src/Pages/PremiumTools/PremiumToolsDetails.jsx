@@ -9,8 +9,30 @@ import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import { FaStar } from 'react-icons/fa';
 import { CiEdit } from 'react-icons/ci';
 import './PremiumToolsDetails.css'
+import { useEffect, useState } from 'react';
 
 const PremiumToolsDetails = () => {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (document.readyState === "complete") {
+            setLoading(false);
+        } else {
+            const handleLoad = () => setLoading(false);
+            window.addEventListener("load", handleLoad);
+            return () => window.removeEventListener("load", handleLoad);
+        }
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <div className="spinner-grow text-success" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
     return (
         <Layout>
             <section className='page_heading_bg'>
