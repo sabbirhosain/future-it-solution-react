@@ -19,7 +19,7 @@ const Footer = () => {
                 <span className='footer_logo_text'>It Solution</span>
               </div>
             </Link>
-            <p className='footer_peragraph'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates illo ducimus autem ipsa, odit hic iste fugiat id velit facere.</p>
+            <p className='footer_peragraph'>We are a results-driven digital agency focused on crafting innovative strategies, designing impactful experiences, and helping brands grow through creativity, technology, and a deep understanding of their audience.</p>
             <div className='footer_social_media_box'>
               <Link to='#' className='footer_social_media_box_icon'><FaFacebookF /></Link>
               <Link to='#' className='footer_social_media_box_icon'><FaLinkedinIn /></Link>

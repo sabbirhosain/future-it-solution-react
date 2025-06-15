@@ -19,7 +19,7 @@ const WhyChooseUs = () => {
                         </div>
                         <div className="col-10">
                             <h5 className='why_choose_us_title'>Experienced and Professional Team</h5>
-                            <p className='why_choose_us_title_peragraph'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias velit explicabo culpa dolor nulla non.</p>
+                            <p className='why_choose_us_title_peragraph'>Our team brings years of industry expertise, creative insight, and strategic thinking to every project—ensuring your brand gets the attention it deserves.</p>
                         </div>
                     </div>
                     <div className="row shadow-sm py-3 px-1 mb-3">
@@ -30,7 +30,7 @@ const WhyChooseUs = () => {
                         </div>
                         <div className="col-10">
                             <h5 className='why_choose_us_title'>Fast & Reliable Service</h5>
-                            <p className='why_choose_us_title_peragraph'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias velit explicabo culpa dolor nulla non.</p>
+                            <p className='why_choose_us_title_peragraph'>We deliver high-impact marketing solutions on time, every time—so you can stay ahead of the competition without delays.</p>
                         </div>
                     </div>
                     <div className="row shadow-sm py-3 px-1">
@@ -41,7 +41,7 @@ const WhyChooseUs = () => {
                         </div>
                         <div className="col-10">
                             <h5 className='why_choose_us_title'>100% Satisfaction Guarantee</h5>
-                            <p className='why_choose_us_title_peragraph'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias velit explicabo culpa dolor nulla non.</p>
+                            <p className='why_choose_us_title_peragraph'>Your success is our priority. We’re committed to delivering results you’ll love—or we’ll work until you do.</p>
                         </div>
                     </div>
                 </div>

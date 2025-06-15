@@ -32,6 +32,8 @@
     text-transform: capitalize;
     padding: 20px 0;
     font-family: var(--primary-fonts);
+    text-align: justify;
+    hyphens: auto;
 }
 
 .footer_social_media_box {
