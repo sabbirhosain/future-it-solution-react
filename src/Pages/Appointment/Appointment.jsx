@@ -6,6 +6,8 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import host_img from '../../assets/user_image.png'
 import './Appointment.css'
+import { appointment_create } from "../../Context/Base_Api_Url";
+import axios from 'axios';
 
 const Appointment = () => {
   // select date
@@ -23,7 +25,6 @@ const Appointment = () => {
   const [bangladesh_date_and_time, setBangladesh_date_and_time] = useState('');
   const [fieldError, setFieldError] = useState({});
   const [loading, setLoading] = useState(false);
-
   useEffect(() => {
     if (!meeting_time || time_zone === '') {
       setBangladesh_date_and_time('');
@@ -64,18 +65,16 @@ const Appointment = () => {
       setFieldError({});
       setLoading(true);
 
-      const response = await axios.post(register, {
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        phone: phone,
-        country: country,
-        password: password,
-        confirm_password: confirmPassword
+      const response = await axios.post(appointment_create, {
+        meeting_date: formattedDate,
+        meeting_time: meeting_time,
+        time_zone_gmt_and_utc: time_zone,
+        meeting_type: meeting_type,
+        meeting_reason: meeting_reason
       });
 
       if (response && response.data) {
-        navigate('/login');
+        window.confirm(response.data.message);
       }
 
     } catch (error) {
@@ -86,36 +85,11 @@ const Appointment = () => {
     }
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <Layout title='Appointment'>
       <section className='appointment_section'>
         <div className="container">
-          <form className="row border py-5">
+          <form onSubmit={handleSubmit} className="row border py-5">
             <div className="col-md-3">
               <div className='p-2'>
                 <img src={host_img} className='appointment_host_img' alt="Host Image" />

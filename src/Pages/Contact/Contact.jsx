@@ -5,7 +5,7 @@ import { BiMailSend } from "react-icons/bi";
 import Layout from "../../Layout/Layout";
 import { useState } from "react";
 import axios from "axios";
-import { contact_form_send } from "../../Context/Base_Api_Url";
+import { contact_form_create } from "../../Context/Base_Api_Url";
 import './Contact.css';
 
 const Contact = () => {
@@ -25,7 +25,7 @@ const Contact = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post(contact_form_send, {
+            const response = await axios.post(contact_form_create, {
                 name: name,
                 email: email,
                 phone: phone,
