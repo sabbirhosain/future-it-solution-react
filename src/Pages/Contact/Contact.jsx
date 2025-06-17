@@ -17,6 +17,7 @@ const Contact = () => {
     const [message, setMessage] = useState('');
     const [fieldError, setFieldError] = useState({});
     const [loading, setLoading] = useState(false);
+    const resetFields = () => { setName(''), setEmail(''), setPhone(''), setAddress(''), setSubject(''), setMessage(''), setFieldError({}) };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,6 +36,7 @@ const Contact = () => {
 
             if (response && response.data) {
                 window.confirm(response.data.message);
+                resetFields();
             }
 
         } catch (error) {

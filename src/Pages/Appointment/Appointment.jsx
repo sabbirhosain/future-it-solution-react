@@ -43,11 +43,8 @@ const Appointment = () => {
     selectedDate.setMinutes(minutes);
     selectedDate.setSeconds(0);
 
-    // Convert to UTC
-    const utcTime = selectedDate.getTime() - parseInt(time_zone) * 60 * 60 * 1000;
-
-    // Convert to Bangladesh Time (GMT+6)
-    const bdDate = new Date(utcTime + 6 * 60 * 60 * 1000);
+    const utcTime = selectedDate.getTime() - parseInt(time_zone) * 60 * 60 * 1000; // Convert to UTC
+    const bdDate = new Date(utcTime + 6 * 60 * 60 * 1000); // Convert to Bangladesh Time (GMT+6)
 
     // Format to 12-hour clock
     let bdHours = bdDate.getHours();
@@ -55,18 +52,39 @@ const Appointment = () => {
     const ampm = bdHours >= 12 ? 'PM' : 'AM';
     bdHours = bdHours % 12 || 12;
 
-    // Determine "Day" or "Night"
-    const timeOfDay = (bdDate.getHours() >= 6 && bdDate.getHours() < 18) ? 'Day' : 'Night';
-
-    // Optional: include date if needed
-    const bdFormattedDate = `${String(bdDate.getMonth() + 1).padStart(2, '0')}-${String(bdDate.getDate()).padStart(2, '0')}-${bdDate.getFullYear()}`;
-
+    const timeOfDay = (bdDate.getHours() >= 6 && bdDate.getHours() < 18) ? 'Day' : 'Night'; // Determine "Day" or "Night"
+    const bdFormattedDate = `${String(bdDate.getMonth() + 1).padStart(2, '0')}-${String(bdDate.getDate()).padStart(2, '0')}-${bdDate.getFullYear()}`; // Optional: include date if needed
     setBangladesh_date_and_time(`${bdFormattedDate} - ${bdHours}:${bdMinutes} ${ampm} (${timeOfDay})`);
-
   }, [meeting_time, time_zone, dateSelect]);
 
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setFieldError({});
+      setLoading(true);
 
+      const response = await axios.post(register, {
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        phone: phone,
+        country: country,
+        password: password,
+        confirm_password: confirmPassword
+      });
+
+      if (response && response.data) {
+        navigate('/login');
+      }
+
+    } catch (error) {
+      setFieldError(error.response.data || 'Internal Server Error');
+      console.error('Internal Server Error', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
 
