@@ -1,23 +1,53 @@
 import PremiumToolsCard from '../../Components/PremiumToolsCard/PremiumToolsCard'
-import Layout from '../../Layout/Layout'
 import { IoCheckmarkDoneOutline } from 'react-icons/io5';
-import './PremiumTools.css';
 import { useEffect, useState } from 'react';
+import { premium_tools_list } from '../../Context/Base_Api_Url';
+import Layout from '../../Layout/Layout'
+import axios from 'axios';
+import './PremiumTools.css';
 
 const PremiumTools = () => {
-  const [loading, setLoading] = useState(true);
+  // All Permium Tools List
+  const [handleError, setHandleError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [premiumTools, setPremiumTools] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  useEffect(() => { getPermiumTools(currentPage) }, [currentPage]);
 
-  useEffect(() => {
-    if (document.readyState === "complete") {
-      setLoading(false);
-    } else {
-      const handleLoad = () => setLoading(false);
-      window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
+  const getPermiumTools = async (page) => {
+    try {
+      setIsLoading(true);
+      setHandleError(null);
+
+      const response = await axios.get(`${premium_tools_list}?page=${page}`);
+      if (response && response.data) {
+        setPremiumTools(response.data.payload);
+        setTotalPages(response.data.total_page || 1);
+      }
+
+    } catch (error) {
+      console.log(error.message);
+      setHandleError(error.response.data || "Something went wrong");
+    } finally {
+      setIsLoading(false);
     }
-  }, []);
+  }
 
-  if (loading) {
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prev => prev - 1);
+    }
+  }
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(prev => prev + 1);
+    }
+  }
+
+  if (isLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
         <div className="spinner-grow text-success" role="status">
@@ -26,27 +56,62 @@ const PremiumTools = () => {
       </div>
     );
   }
+
+
+
+  if (handleError) {
+    return (
+      <Layout title='Error'>
+        <div className="container py-5">
+          <div className="alert alert-danger text-center">
+            {handleError}
+            <button className="btn btn-sm btn-outline-danger ms-3" onClick={() => getPermiumTools(currentPage)}>Retry</button>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+
   return (
     <Layout title='Premium Tools'>
       <section className='page_heading_bg'>
         <div className="container">
           <div className="row align-items-center justify-content-center">
             <div className="col-md-7">
-              <h2 className='page_heading_tagline'><IoCheckmarkDoneOutline className='page_heading_tagline_icon' />Our Employee</h2>
+              <h2 className='page_heading_tagline'><IoCheckmarkDoneOutline className='page_heading_tagline_icon' />Premium Tools</h2>
               <span className='page_heading_title'>Smart solution to <span className='page_heading_title_color'>build a outstanding </span>performance easily.</span>
             </div>
           </div>
         </div>
       </section>
+
       <section className='premium_tools_section'>
         <div className="container">
-          <div className="row">
-            <PremiumToolsCard />
-            <PremiumToolsCard />
-            <PremiumToolsCard />
-            <PremiumToolsCard />
-            <PremiumToolsCard />
-            <PremiumToolsCard />
+          
+          {premiumTools?.length > 0 ? (
+            <div className="row">
+              {premiumTools.map((item, index) => (<PremiumToolsCard key={index} item={item} />))}
+            </div>
+          ) : (
+            <div className="text-center py-5">
+              <h4>No premium tools available</h4>
+            </div>
+          )}
+
+        </div>
+      </section>
+
+      <section className='pagination_section mb-5'>
+        <div className="container">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-md-6">
+              <div className='d-flex align-items-center justify-content-center gap-3'>
+                <button onChange={(page) => getPermiumTools(page - 1)} className='btn btn-primary rounded-0 btn-sm'>Prev</button>
+                <span>1 / 3</span>
+                <button onChange={(page) => getPermiumTools(page + 1)} className='btn btn-primary rounded-0 btn-sm'>Next</button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

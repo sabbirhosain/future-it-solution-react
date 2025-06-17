@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import CryptoJS from 'crypto-js';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { premium_tools_list } from './Base_Api_Url';
 
 const AppContextProvider = createContext()
 const Context = ({ children }) => {
@@ -33,72 +34,37 @@ const Context = ({ children }) => {
     }
 
     // User Logout
-    const logout = () => {
+    const logOut = () => {
         localStorage.removeItem('root');
         navigate('/login');
     };
 
 
-    // Refresh Token
-    // const location = useLocation();
-    // const refreshAccessToken = async () => {
-    //     const encryptedToken = localStorage.getItem("root");
-    //     const decryptToken = encryptedToken ? decryptData(encryptedToken) : null;
 
-    //     if (!decryptToken?.refresh_token) {
-    //         console.error("Refresh token failed:");
-    //         localStorage.removeItem("root");
-    //         window.location.href = "/login";
-    //         return null;
-    //     }
 
-    //     try {
-    //         const response = await fetch(refreshToken, {
-    //             method: 'POST', headers: { 'Content-Type': 'application/json', },
-    //             body: JSON.stringify({ refresh: decryptToken.refresh_token, }),
-    //         });
 
-    //         const data = await response.json();
-    //         if (response.ok) {
-    //             localStorage.setItem('root', encryptData(data));
-    //             // window.location.href = "/dashboad";
-    //             window.location.href = location.pathname;
-    //             return data;
-    //         } else {
-    //             console.error('Refresh Token failed:', data);
-    //         }
-    //     } catch (error) {
-    //         console.error("Refresh token failed:", error);
-    //     }
-    // };
 
-    // User Profile Fetch
-    // const [updateProfile, setUpdateProfile] = useState({ first_name: "", last_name: "", username: "", email: "", phone_number: "", date_of_birth: "", user_image: null });
-    // const [userProfile, setUserProfile] = useState({});
 
-    // const userProfileFetch = async () => {
-    //     try {
-    //         const encryptedToken = localStorage.getItem("root");
-    //         const decryptToken = encryptedToken ? decryptData(encryptedToken) : null;
 
-    //         if (decryptToken) {
-    //             const response = await axios.get(`${singleUser}${decryptToken?.user?.id}`);
-    //             if (response && response.data) {
-    //                 setUserProfile(response.data.data);
-    //                 setUpdateProfile((prev) => ({ ...prev, ...response.data.data }));
-    //             }
-    //         }
-    //     } catch (error) {
-    //         if (error.response && (error.response?.status === 401 || error.response.status === 403 || error.response?.data?.code === "token_not_valid")) {
-    //             await refreshAccessToken()
-    //         } else {
-    //             console.log(error);
-    //         }
-    //     }
-    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return (
-        <AppContextProvider.Provider value={{ encryptData, decryptData }}>
+        <AppContextProvider.Provider value={{ encryptData, decryptData, logOut }}>
             {children}
         </AppContextProvider.Provider>
     )
@@ -109,4 +75,18 @@ export default Context
 // coustom hooks
 export const useAppContextProvider = () => {
     return useContext(AppContextProvider)
+};
+
+
+// Protected Route Component
+export const ProtectedRoute = ({ children }) => {
+    const { decryptData } = useAppContextProvider();
+    const encryptedToken = localStorage.getItem("roots");
+    const decryptToken = encryptedToken ? decryptData(encryptedToken) : null;
+
+    if (!decryptToken?.accessToken) {
+        return <Navigate to="/login" />;
+    } else {
+        return children ? children : <Outlet />;
+    }
 };

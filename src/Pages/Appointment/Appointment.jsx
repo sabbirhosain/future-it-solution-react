@@ -9,37 +9,95 @@ import './Appointment.css'
 
 const Appointment = () => {
   // select date
-  const [dateSelect, setDateSelect] = useState(new Date());
   const today = new Date();
   const sevenDaysFromToday = new Date();
   sevenDaysFromToday.setDate(today.getDate() + 6);
-  const [loading, setLoading] = useState(true);
+
+  const [dateSelect, setDateSelect] = useState(new Date());
+  const formattedDate = `${String(dateSelect.getMonth() + 1).padStart(2, '0')}-${String(dateSelect.getDate()).padStart(2, '0')}-${dateSelect.getFullYear()}`;
+
+  const [meeting_time, setMeeting_time] = useState('');
+  const [time_zone, setTime_zone] = useState('');
+  const [meeting_type, setMeeting_type] = useState('');
+  const [meeting_reason, setMeeting_reason] = useState('');
+  const [bangladesh_date_and_time, setBangladesh_date_and_time] = useState('');
+  const [fieldError, setFieldError] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (document.readyState === "complete") {
-      setLoading(false);
-    } else {
-      const handleLoad = () => setLoading(false);
-      window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
+    if (!meeting_time || time_zone === '') {
+      setBangladesh_date_and_time('');
+      return;
     }
-  }, []);
 
-  if (loading) {
-    return (
-      <div className="d-flex justify-content-center align-items-center vh-100">
-        <div className="spinner-grow text-success" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    );
-  }
+    // Parse selected time and timezone
+    const [time, modifier] = meeting_time.split(' ');
+    let [hours, minutes] = time.split(':').map(Number);
+
+    if (modifier === 'PM' && hours !== 12) hours += 12;
+    if (modifier === 'AM' && hours === 12) hours = 0;
+
+    // Create Date object in selected timezone
+    const selectedDate = new Date(dateSelect);
+    selectedDate.setHours(hours);
+    selectedDate.setMinutes(minutes);
+    selectedDate.setSeconds(0);
+
+    // Convert to UTC
+    const utcTime = selectedDate.getTime() - parseInt(time_zone) * 60 * 60 * 1000;
+
+    // Convert to Bangladesh Time (GMT+6)
+    const bdDate = new Date(utcTime + 6 * 60 * 60 * 1000);
+
+    // Format to 12-hour clock
+    let bdHours = bdDate.getHours();
+    const bdMinutes = String(bdDate.getMinutes()).padStart(2, '0');
+    const ampm = bdHours >= 12 ? 'PM' : 'AM';
+    bdHours = bdHours % 12 || 12;
+
+    // Determine "Day" or "Night"
+    const timeOfDay = (bdDate.getHours() >= 6 && bdDate.getHours() < 18) ? 'Day' : 'Night';
+
+    // Optional: include date if needed
+    const bdFormattedDate = `${String(bdDate.getMonth() + 1).padStart(2, '0')}-${String(bdDate.getDate()).padStart(2, '0')}-${bdDate.getFullYear()}`;
+
+    setBangladesh_date_and_time(`${bdFormattedDate} - ${bdHours}:${bdMinutes} ${ampm} (${timeOfDay})`);
+
+  }, [meeting_time, time_zone, dateSelect]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <Layout title='Appointment'>
       <section className='appointment_section'>
         <div className="container">
-          <form className="row border py-3">
+          <form className="row border py-5">
             <div className="col-md-3">
               <div className='p-2'>
                 <img src={host_img} className='appointment_host_img' alt="Host Image" />
@@ -59,8 +117,8 @@ const Appointment = () => {
                 </div>
                 <div className="col-md-4 mb-3">
                   <label className='form-label'>Your Meeting Time</label>
-                  <select class="form-select rounded-0">
-                    <option selected>Select Option</option>
+                  <select value={meeting_time} onChange={(event) => setMeeting_time(event.target.value)} className="form-select rounded-0">
+                    <option value="">Select Option</option>
                     <option value="12:00 AM">12:00 AM</option>
                     <option value="01:00 AM">01:00 AM</option>
                     <option value="02:00 AM">02:00 AM</option>
@@ -89,8 +147,8 @@ const Appointment = () => {
                 </div>
                 <div className="col-md-4 mb-3">
                   <label className='form-label'>Your Time Zone</label>
-                  <select class="form-select rounded-0">
-                    <option selected>Select Option</option>
+                  <select value={time_zone} onChange={(event) => setTime_zone(event.target.value)} className="form-select rounded-0">
+                    <option value="">Select Option</option>
                     <option value="-12">GMT -12:00 - UTC -12</option>
                     <option value="-11">GMT -11:00 - UTC -11</option>
                     <option value="-10">GMT -10:00 - UTC -10</option>
@@ -122,21 +180,21 @@ const Appointment = () => {
                 </div>
                 <div className="col-md-4 mb-4">
                   <label className='form-label'>Bangladesh Time</label>
-                  <input className='form-control rounded-0' placeholder='00 : 00 : 00 AM/PM' readOnly />
+                  <input value={bangladesh_date_and_time} className='form-control rounded-0' placeholder='00-00-0000 - 0:00 AM/PM' readOnly />
                 </div>
                 <div className="col-md-12 mb-3">
                   <label className='form-label'>Choose your meeting type?</label>
                   <div className="d-flex align-items-center gap-3">
                     <div className="form-check">
-                      <input className="form-check-input border-primary" type="radio" name="meeting" id="googleMeet" />
+                      <input onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="googleMeet" />
                       <label className="form-check-label" htmlFor="googleMeet">Google Meet</label>
                     </div>
                     <div className="form-check">
-                      <input className="form-check-input border-primary" type="radio" name="meeting" id="zoomMeet" />
+                      <input onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="zoomMeet" />
                       <label className="form-check-label" htmlFor="zoomMeet">Zoom Meet</label>
                     </div>
                     <div className="form-check">
-                      <input className="form-check-input border-primary" type="radio" name="meeting" id="whatsappChatting" />
+                      <input onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="whatsappChatting" />
                       <label className="form-check-label" htmlFor="whatsappChatting">Whatsapp Meet</label>
                     </div>
                   </div>
@@ -144,11 +202,11 @@ const Appointment = () => {
 
                 <div className="col-md-12 mb-4">
                   <label className='form-label'>Meeting Reason</label>
-                  <textarea rows='3' className='form-control rounded-0' placeholder='write hear' />
+                  <textarea value={meeting_reason} onChange={(event) => setMeeting_reason(event.target.value)} rows='3' className='form-control rounded-0' placeholder='Your Message...' />
                 </div>
 
                 <div className="col-md-12">
-                  <button className='btn btn-success rounded-0 w-100 booking_schedule_btn'>Booking schedule</button>
+                  <button type='submit' className='btn btn-success rounded-0 w-100 booking_schedule_btn'>Booking schedule</button>
                 </div>
               </div>
             </div>

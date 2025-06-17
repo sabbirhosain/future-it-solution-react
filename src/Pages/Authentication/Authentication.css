@@ -1,6 +1,6 @@
 .register_section,
 .login_section {
-    background-color: rgb(113, 150, 113);
+    background-color: gainsboro;
 }
 
 .password_show_btn {

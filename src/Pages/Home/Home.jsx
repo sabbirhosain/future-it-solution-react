@@ -65,7 +65,7 @@ const Home = () => {
               <p className='hero_peragraph'>Our professional team is ready to take your business to the next level. Are you ready to grow?</p>
               <div className='d-flex align-items-center gap-3'>
                 <Link to='/' className='hero_section_btn'><SiGooglemeet />Google Meeting</Link>
-                <Link to='/premium-tools' className='hero_section_btn'><VscTools />Buy Tools</Link>
+                <Link to='/premium-tools' className='hero_section_btn'><VscTools />Premium Tools</Link>
               </div>
             </div>
             <div className="col-md-6 order-1 order-md-2 mb-5 mb-md-0">

@@ -1,12 +1,11 @@
-'use client'
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import './Authentication.css'
 import Layout from "../../Layout/Layout";
 import { login } from "../../Context/Base_Api_Url";
 import { useAppContextProvider } from "../../Context/Context";
 import { toast } from "react-toastify";
+import './Authentication.css'
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +19,7 @@ const Login = () => {
 
     // if user is already login than redirect dashboad page
     useEffect(() => {
-        const storedData = localStorage.getItem('root');
+        const storedData = localStorage.getItem('roots');
         if (storedData) {
             try {
                 const decryptedData = decryptData(storedData);
@@ -29,7 +28,7 @@ const Login = () => {
                 }
             } catch (error) {
                 console.error('Error decrypting data:', error);
-                localStorage.removeItem('root');
+                localStorage.removeItem('roots');
             }
         }
     }, [navigate, decryptData]);
@@ -42,7 +41,7 @@ const Login = () => {
 
         try {
             if (!user || !password) {
-                return setError("user and password is required...!!")
+                return setFieldError("user and password is required...!!")
             }
             const response = await fetch(login, {
                 method: 'POST', headers: { 'Content-Type': 'application/json', },
@@ -52,7 +51,7 @@ const Login = () => {
             const data = await response.json();
             if (response.ok) {
                 toast.success(data.message || 'Login Success!')
-                localStorage.setItem('root', encryptData(data)); // Encrypt user data
+                localStorage.setItem('roots', encryptData(data)); // Encrypt user data
                 navigate('/');
             } else {
                 setFieldError(data.message || 'User and Password Invalid');
@@ -77,17 +76,18 @@ const Login = () => {
                             <div className="row">
                                 <div className="col-md-12 mb-3">
                                     <label className='form-label'>Email Address</label>
-                                    <input type="text" className='form-control rounded-0' value={user} onChange={(e) => setUser(e.target.value)} disabled={loading} required />
+                                    <input type="text" className='form-control rounded-0' value={user} onChange={(e) => setUser(e.target.value)} required disabled={loading} />
                                 </div>
                                 <div className="col-md-12 mb-3">
                                     <label className='form-label'>Password</label>
                                     <div className='position-relative'>
-                                        <input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} className='form-control rounded-0' disabled={loading} required />
+                                        <input type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} className='form-control rounded-0' required disabled={loading} />
                                         <button type="button" className='password_show_btn' onClick={passwordShowToggle}>{showPassword ? <FaRegEye /> : <FaRegEyeSlash />}</button>
                                     </div>
+                                    <small className="text-danger">{fieldError}</small>
                                 </div>
                                 <div className="col-md-12 mt-3">
-                                    <button type="submit" className='btn btn-success rounded-0 w-100'>Login Now</button>
+                                    <button type="submit" className='btn btn-success rounded-0 w-100' disabled={loading}>{loading ? 'Please Wait...' : 'Login Now'}</button>
                                     <p className='text-center mt-4'>I don't have an account <Link to='/register'>Register</Link></p>
                                 </div>
                             </div>

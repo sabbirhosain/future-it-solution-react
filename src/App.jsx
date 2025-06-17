@@ -23,6 +23,8 @@ import "./App.css"
 import OrderConfirm from "./Pages/OrderConfirm/OrderConfirm"
 import MeetingSchedule from "./Pages/Dashboard/MeetingSchedule"
 import { ToastContainer } from "react-toastify"
+import { ProtectedRoute } from "./Context/Context"
+
 
 const App = () => {
   return (
@@ -31,25 +33,27 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services-details/:id" element={<ServicesDetails />} />
         <Route path="/project" element={<Project />} />
         <Route path="/premium-tools" element={<PremiumTools />} />
         <Route path="/premium-tools/:id" element={<PremiumToolsDetails />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/appointment" element={<Appointment />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/order" element={<MyOrder />} />
-        <Route path="/order-confirm/:id" element={<OrderConfirm />} />
-        <Route path="/meeting-schedule" element={<MeetingSchedule />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/reports" element={<Reports />} />
-        <Route path="/data-and-privacy" element={<DataAndPrivacy />} />
-        <Route path="/live-support" element={<LiveSupport />} />
         <Route path="*" element={<NotFound />} />
+        
+        <Route path="/" element={<ProtectedRoute />}>
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/order" element={<MyOrder />} />
+          <Route path="/order-confirm/:id" element={<OrderConfirm />} />
+          <Route path="/meeting-schedule" element={<MeetingSchedule />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/reports" element={<Reports />} />
+          <Route path="/data-and-privacy" element={<DataAndPrivacy />} />
+          <Route path="/live-support" element={<LiveSupport />} />
+        </Route>
       </Routes>
     </>
   )

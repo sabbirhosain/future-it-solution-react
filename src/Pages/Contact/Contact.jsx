@@ -1,67 +1,84 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { IoCheckmarkDoneOutline } from 'react-icons/io5';
 import { SiUpwork } from "react-icons/si";
 import { TbBrandFiverr } from "react-icons/tb";
 import { BiMailSend } from "react-icons/bi";
 import Layout from "../../Layout/Layout";
+import { useState } from "react";
+import axios from "axios";
+import { contact_form_send } from "../../Context/Base_Api_Url";
 import './Contact.css';
-import { useEffect, useState } from "react";
 
 const Contact = () => {
-    const [loading, setLoading] = useState(true);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+    const [fieldError, setFieldError] = useState({});
+    const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        if (document.readyState === "complete") {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setFieldError({});
+        setLoading(true);
+
+        try {
+            const response = await axios.post(contact_form_send, {
+                name: name,
+                email: email,
+                phone: phone,
+                address: address,
+                subject: subject,
+                message: message
+            });
+
+            if (response && response.data) {
+                window.confirm(response.data.message);
+            }
+
+        } catch (error) {
+            setFieldError(error.response.data || 'Internal Server Error');
+            console.error('Internal Server Error', error);
+        } finally {
             setLoading(false);
-        } else {
-            const handleLoad = () => setLoading(false);
-            window.addEventListener("load", handleLoad);
-            return () => window.removeEventListener("load", handleLoad);
         }
-    }, []);
+    };
 
-    if (loading) {
-        return (
-            <div className="d-flex justify-content-center align-items-center vh-100">
-                <div className="spinner-grow text-success" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        );
-    }
+
     return (
         <Layout title='Contact'>
             <section className='countact_us'>
                 <div className="container">
                     <div className="row align-items-center justify-content-between">
                         <div className="col-md-6">
-                            <form action="">
+                            <form onSubmit={handleSubmit}>
                                 <div className="row border px-3 py-4">
                                     <div className="col-md-6 mb-3">
                                         <label className='form-label form_label'>Your Name</label>
-                                        <input type="text" className='form-control rounded-0 form_control' required />
+                                        <input type="text" value={name} onChange={(event) => setName(event.target.value)} className='form-control rounded-0 form_control' required disabled={loading} />
                                     </div>
                                     <div className="col-md-6 mb-3">
                                         <label className='form-label form_label'>Your Email</label>
-                                        <input type="email" className='form-control rounded-0 form_control' required />
+                                        <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} className='form-control rounded-0 form_control' required disabled={loading} />
                                     </div>
                                     <div className="col-md-6 mb-3">
                                         <label className='form-label form_label'>Phone Number</label>
-                                        <input type="text" className='form-control rounded-0 form_control' required />
+                                        <input type="tel" value={phone} onChange={(event) => setPhone(event.target.value)} className='form-control rounded-0 form_control' required disabled={loading} />
                                     </div>
                                     <div className="col-md-6 mb-3">
                                         <label className='form-label form_label'>Address</label>
-                                        <input type="text" className='form-control rounded-0 form_control' required />
+                                        <input type="text" value={address} onChange={(event) => setAddress(event.target.value)} className='form-control rounded-0 form_control' required disabled={loading} />
                                     </div>
                                     <div className="col-md-12 mb-3">
                                         <label className='form-label form_label'>Subject</label>
-                                        <input type="text" className='form-control rounded-0 form_control' required />
+                                        <input type="text" value={subject} onChange={(event) => setSubject(event.target.value)} className='form-control rounded-0 form_control' required disabled={loading} />
                                     </div>
                                     <div className="col-md-12 mb-3">
-                                        <textarea rows='4' className='form-control rounded-0 form_control' placeholder='Your Massage...' required />
+                                        <textarea rows='4' value={message} onChange={(event) => setMessage(event.target.value)} className='form-control rounded-0 form_control' placeholder='Your Massage...' required disabled={loading} />
                                     </div>
                                     <div className="col-md-12 mt-2">
-                                        <button type='submit' className='contact_submit_btn'><BiMailSend />Submit Now</button>
+                                        <button type="submit" className='contact_submit_btn' disabled={loading}><BiMailSend />{loading ? 'Please Wait...' : 'Submit Now'}</button>
                                     </div>
                                 </div>
                             </form>
