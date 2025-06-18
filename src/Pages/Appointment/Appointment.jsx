@@ -8,6 +8,7 @@ import host_img from '../../assets/user_image.png'
 import './Appointment.css'
 import { appointment_create } from "../../Context/Base_Api_Url";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Appointment = () => {
   // select date
@@ -25,6 +26,7 @@ const Appointment = () => {
   const [bangladesh_date_and_time, setBangladesh_date_and_time] = useState('');
   const [fieldError, setFieldError] = useState({});
   const [loading, setLoading] = useState(false);
+  const resetFields = () => { setDateSelect(new Date()), setMeeting_time(''), setTime_zone(''), setMeeting_type(''), setMeeting_reason(''), setBangladesh_date_and_time(''), setFieldError({}) };
 
   useEffect(() => {
     if (!meeting_time || time_zone === '') {
@@ -76,7 +78,12 @@ const Appointment = () => {
       });
 
       if (response && response.data) {
-        window.confirm(response.data.message);
+        Swal.fire({
+          text: response.data.message,
+          confirmButtonText: 'OKAY',
+          confirmButtonColor: '#09684f',
+        });
+        resetFields()
       }
 
     } catch (error) {
@@ -107,11 +114,11 @@ const Appointment = () => {
             <div className="col-md-9">
               <div className="row border-start">
                 <div className="col-md-12 mb-5">
-                  <Calendar className='appointment_calender' minDate={today} maxDate={sevenDaysFromToday} onChange={setDateSelect} value={dateSelect} />
+                  <Calendar className='appointment_calender' minDate={today} maxDate={sevenDaysFromToday} onChange={setDateSelect} value={dateSelect} disabled={loading} />
                 </div>
                 <div className="col-md-4 mb-3">
                   <label className='form-label'>Your Meeting Time</label>
-                  <select value={meeting_time} onChange={(event) => setMeeting_time(event.target.value)} className="form-select rounded-0">
+                  <select value={meeting_time} onChange={(event) => setMeeting_time(event.target.value)} className="form-select rounded-0" required disabled={loading}>
                     <option value="">Select Option</option>
                     <option value="12:00 AM">12:00 AM</option>
                     <option value="01:00 AM">01:00 AM</option>
@@ -141,7 +148,7 @@ const Appointment = () => {
                 </div>
                 <div className="col-md-4 mb-3">
                   <label className='form-label'>Your Time Zone</label>
-                  <select value={time_zone} onChange={(event) => setTime_zone(event.target.value)} className="form-select rounded-0">
+                  <select value={time_zone} onChange={(event) => setTime_zone(event.target.value)} className="form-select rounded-0" required disabled={loading}>
                     <option value="">Select Option</option>
                     <option value="-12">GMT -12:00 - UTC -12</option>
                     <option value="-11">GMT -11:00 - UTC -11</option>
@@ -174,21 +181,21 @@ const Appointment = () => {
                 </div>
                 <div className="col-md-4 mb-4">
                   <label className='form-label'>Bangladesh Time</label>
-                  <input value={bangladesh_date_and_time} className='form-control rounded-0' placeholder='00-00-0000 - 0:00 AM/PM' readOnly />
+                  <input value={bangladesh_date_and_time} className='form-control rounded-0' placeholder='00-00-0000 - 0:00 AM/PM' readOnly disabled={loading} />
                 </div>
                 <div className="col-md-12 mb-3">
                   <label className='form-label'>Choose your meeting type?</label>
                   <div className="d-flex align-items-center gap-3">
                     <div className="form-check">
-                      <input value='google_meet' onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="googleMeet" />
+                      <input value='google_meet' onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="googleMeet" disabled={loading} />
                       <label className="form-check-label" htmlFor="googleMeet">Google Meet</label>
                     </div>
                     <div className="form-check">
-                      <input value='zoom_meet' onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="zoomMeet" />
+                      <input value='zoom_meet' onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="zoomMeet" disabled={loading} />
                       <label className="form-check-label" htmlFor="zoomMeet">Zoom Meet</label>
                     </div>
                     <div className="form-check">
-                      <input value='whatsapp_meet' onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="whatsappChatting" />
+                      <input value='whatsapp_meet' onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="whatsappChatting" disabled={loading} />
                       <label className="form-check-label" htmlFor="whatsappChatting">Whatsapp Meet</label>
                     </div>
                   </div>
@@ -196,11 +203,11 @@ const Appointment = () => {
 
                 <div className="col-md-12 mb-4">
                   <label className='form-label'>Meeting Reason</label>
-                  <textarea value={meeting_reason} onChange={(event) => setMeeting_reason(event.target.value)} rows='3' className='form-control rounded-0' placeholder='Your Message...' />
+                  <textarea value={meeting_reason} onChange={(event) => setMeeting_reason(event.target.value)} rows='3' className='form-control rounded-0' placeholder='Your Message...' required disabled={loading} />
                 </div>
 
                 <div className="col-md-12">
-                  <button type='submit' className='btn btn-success rounded-0 w-100 booking_schedule_btn'>Booking schedule</button>
+                  <button type="submit" className='btn btn-success rounded-0 w-100 booking_schedule_btn' disabled={loading}>{loading ? 'Please Wait...' : 'Booking schedule'}</button>
                 </div>
               </div>
             </div>
