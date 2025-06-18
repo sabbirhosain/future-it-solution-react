@@ -19,14 +19,24 @@ import Profile from "./Pages/Dashboard/Profile"
 import Reports from "./Pages/Dashboard/Reports"
 import DataAndPrivacy from "./Pages/Dashboard/DataAndPrivacy"
 import LiveSupport from "./Pages/Dashboard/LiveSupport"
-import "./App.css"
 import OrderConfirm from "./Pages/OrderConfirm/OrderConfirm"
 import MeetingSchedule from "./Pages/Dashboard/MeetingSchedule"
 import { ToastContainer } from "react-toastify"
-import { ProtectedRoute } from "./Context/Context"
+import { ProtectedRoute, useAppContextProvider } from "./Context/Context"
+import "./App.css"
+import axios from "axios"
 
 
 const App = () => {
+  // axios defaults config
+  const { decryptData } = useAppContextProvider();
+  const encryptedToken = localStorage.getItem("roots");
+  const decryptToken = encryptedToken ? decryptData(encryptedToken) : null;
+
+  axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+  axios.defaults.headers.common['Authorization'] = `Bearer ${decryptToken?.accessToken}`;
+  axios.defaults.headers.post['Content-Type'] = 'application/json';
+
   return (
     <>
       <ToastContainer position="top-right" autoClose={1000} />
@@ -42,7 +52,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
-        
+
         <Route path="/" element={<ProtectedRoute />}>
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/dashboard" element={<Dashboard />} />
