@@ -25,6 +25,7 @@ const Appointment = () => {
   const [bangladesh_date_and_time, setBangladesh_date_and_time] = useState('');
   const [fieldError, setFieldError] = useState({});
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     if (!meeting_time || time_zone === '') {
       setBangladesh_date_and_time('');
@@ -68,6 +69,7 @@ const Appointment = () => {
       const response = await axios.post(appointment_create, {
         meeting_date: formattedDate,
         meeting_time: meeting_time,
+        meeting_bangladesh_time: bangladesh_date_and_time,
         time_zone_gmt_and_utc: time_zone,
         meeting_type: meeting_type,
         meeting_reason: meeting_reason
@@ -178,15 +180,15 @@ const Appointment = () => {
                   <label className='form-label'>Choose your meeting type?</label>
                   <div className="d-flex align-items-center gap-3">
                     <div className="form-check">
-                      <input onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="googleMeet" />
+                      <input value='google_meet' onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="googleMeet" />
                       <label className="form-check-label" htmlFor="googleMeet">Google Meet</label>
                     </div>
                     <div className="form-check">
-                      <input onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="zoomMeet" />
+                      <input value='zoom_meet' onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="zoomMeet" />
                       <label className="form-check-label" htmlFor="zoomMeet">Zoom Meet</label>
                     </div>
                     <div className="form-check">
-                      <input onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="whatsappChatting" />
+                      <input value='whatsapp_meet' onChange={(event) => setMeeting_type(event.target.value)} className="form-check-input border-primary" type="radio" name="meeting" id="whatsappChatting" />
                       <label className="form-check-label" htmlFor="whatsappChatting">Whatsapp Meet</label>
                     </div>
                   </div>
