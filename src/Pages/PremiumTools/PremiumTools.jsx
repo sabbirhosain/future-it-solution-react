@@ -13,7 +13,6 @@ const PremiumTools = () => {
   const [premiumTools, setPremiumTools] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  useEffect(() => { getPermiumTools(currentPage) }, [currentPage]);
 
   const getPermiumTools = async (page) => {
     try {
@@ -21,9 +20,10 @@ const PremiumTools = () => {
       setHandleError(null);
 
       const response = await axios.get(`${premium_tools_list}?page=${page}`);
+
       if (response && response.data) {
         setPremiumTools(response.data.payload);
-        setTotalPages(response.data.total_page || 1);
+        setTotalPages(response.data.pagination?.total_page || 1);
       }
 
     } catch (error) {
@@ -34,7 +34,7 @@ const PremiumTools = () => {
     }
   }
 
-
+  useEffect(() => { getPermiumTools(currentPage) }, [currentPage]);
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(prev => prev - 1);
@@ -88,14 +88,14 @@ const PremiumTools = () => {
 
       <section className='premium_tools_section'>
         <div className="container">
-          
+
           {premiumTools?.length > 0 ? (
             <div className="row">
               {premiumTools.map((item, index) => (<PremiumToolsCard key={index} item={item} />))}
             </div>
           ) : (
             <div className="text-center py-5">
-              <h4>No premium tools available</h4>
+              <span>No premium tools available</span>
             </div>
           )}
 
@@ -107,9 +107,9 @@ const PremiumTools = () => {
           <div className="row align-items-center justify-content-center">
             <div className="col-md-6">
               <div className='d-flex align-items-center justify-content-center gap-3'>
-                <button onChange={(page) => getPermiumTools(page - 1)} className='btn btn-primary rounded-0 btn-sm'>Prev</button>
-                <span>1 / 3</span>
-                <button onChange={(page) => getPermiumTools(page + 1)} className='btn btn-primary rounded-0 btn-sm'>Next</button>
+                <button onClick={handlePrevPage} className='btn btn-success rounded-0 btn-sm' disabled={currentPage === 1} > Prev </button>
+                <span>{currentPage} / {totalPages}</span>
+                <button onClick={handleNextPage} className='btn btn-success rounded-0 btn-sm' disabled={currentPage === totalPages} > Next </button>
               </div>
             </div>
           </div>

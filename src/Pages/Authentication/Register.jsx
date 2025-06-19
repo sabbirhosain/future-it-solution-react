@@ -1,9 +1,9 @@
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import Layout from "../../Layout/Layout";
-import axios from "axios";
 import { register } from "../../Context/Base_Api_Url";
+import Layout from "../../Layout/Layout";
+import { useState } from 'react';
+import axios from "axios";
 import './Authentication.css'
 
 const Register = () => {
@@ -98,7 +98,7 @@ const Register = () => {
                                     </div>
                                 </div>
                                 <div className="col-md-12 mt-3">
-                                    <button type="submit" className='btn btn-success rounded-0 w-100' disabled={loading}>Register</button>
+                                    <button type="submit" className='btn btn-success rounded-0 w-100' disabled={loading}>{loading ? 'Please Wait...' : 'Register Now'}</button>
                                     <p className='text-center mt-4'>I have already an account <Link to='/login'>Login</Link></p>
                                 </div>
                             </div>
