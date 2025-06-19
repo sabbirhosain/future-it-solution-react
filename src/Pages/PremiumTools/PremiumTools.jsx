@@ -57,8 +57,6 @@ const PremiumTools = () => {
     );
   }
 
-
-
   if (handleError) {
     return (
       <Layout title='Error'>

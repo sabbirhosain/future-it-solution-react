@@ -79,5 +79,13 @@
     font-size: 15px;
     font-family: var(--primary-fonts);
     font-weight: 400;
-    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 2.4em;
+    line-height: 1.2em;
+    margin: 0;
+    padding: 0;
 }

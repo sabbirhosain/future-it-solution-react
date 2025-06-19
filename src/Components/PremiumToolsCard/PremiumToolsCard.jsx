@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import './PremiumToolsCard.css';
 
 const PremiumToolsCard = ({ item }) => {
-  const { _id, tools_name, short_description, rating, total_sold, pricing_tiers } = item || {};
-  const { price = 0, currency = "USD", discount } = pricing_tiers[0] || {};
+  const { _id, tools_name, short_description, total_rating, total_sold, pricing_tiers } = item || {};
+  const { price, currency, discount } = pricing_tiers[0] || {};
 
   return (
     <div className="col-md-3 mb-5">
@@ -18,7 +18,7 @@ const PremiumToolsCard = ({ item }) => {
         <div className="d-flex align-items-center mt-1">
           <span className='tools_service_price'>{price} {currency}</span>
           <span className='tools_service_rating'>
-            <FaStar style={{ color: 'gold' }} /> {rating} ({total_sold})
+            <FaStar style={{ color: 'gold' }} /> {total_rating} ({total_sold})
           </span>
         </div>
         <div className='tools_service_text_box'>
