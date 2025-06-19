@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import CryptoJS from 'crypto-js';
-import { Outlet, Navigate, useNavigate } from 'react-router-dom';
+import { Outlet, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { premium_tools_list } from './Base_Api_Url';
+import { premium_tools_list, verify_token } from './Base_Api_Url';
 
 const AppContextProvider = createContext()
 const Context = ({ children }) => {
@@ -22,10 +22,10 @@ const Context = ({ children }) => {
     }
 
     // decrypt localstroge data
-    const decryptData = (encryptedData) => {
+    const decryptData = (data) => {
         try {
-            if (!encryptedData) { console.log("No data found to decrypt."); return null }
-            const bytes = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
+            if (!data) { console.log("No data found to decrypt."); return null }
+            const bytes = CryptoJS.AES.decrypt(data, SECRET_KEY);
             return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
         } catch (error) {
             console.error('Decryption failed:', error);
@@ -33,38 +33,37 @@ const Context = ({ children }) => {
         }
     }
 
-    // User Logout
-    const logOut = () => {
-        localStorage.removeItem('root');
-        navigate('/login');
+    // Verify JWT token validity
+    const verifyToken = async (token) => {
+        try {
+            if (!token) return false;
+            const response = await axios.post(verify_token, { token: token });
+
+            if (response && response.data) {
+                return response.data.isValid;
+            }
+        } catch (error) {
+            console.error('Token verification failed:', error);
+            return false;
+        }
     };
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // User Logout
+    const logOut = () => {
+        const confirmLogout = window.confirm("Are you sure you want to log out?");
+        if (confirmLogout) {
+            localStorage.removeItem('roots');
+            navigate('/login');
+        }
+    };
 
 
 
     return (
-        <AppContextProvider.Provider value={{ encryptData, decryptData, logOut }}>
+        <AppContextProvider.Provider value={{ encryptData, decryptData, verifyToken, logOut }}>
             {children}
         </AppContextProvider.Provider>
     )
@@ -80,13 +79,47 @@ export const useAppContextProvider = () => {
 
 // Protected Route Component
 export const ProtectedRoute = ({ children }) => {
-    const { decryptData } = useAppContextProvider();
-    const encryptedToken = localStorage.getItem("roots");
-    const decryptToken = encryptedToken ? decryptData(encryptedToken) : null;
+    const location = useLocation();
+    const { decryptData, verifyToken } = useAppContextProvider();
+    const [authState, setAuthState] = useState({ isValid: null, isLoading: true, error: null });
 
-    if (!decryptToken?.accessToken) {
-        return <Navigate to="/login" />;
-    } else {
-        return children ? children : <Outlet />;
+    useEffect(() => {
+        let isMounted = true;
+
+        const checkToken = async () => {
+            try {
+                const encryptedToken = localStorage.getItem("roots");
+                const decryptToken = encryptedToken ? decryptData(encryptedToken) : null;
+                const isTokenValid = decryptToken?.accessToken;
+
+                if (!isTokenValid) {
+                    if (isMounted) { setAuthState({ isValid: false, isLoading: false, error: 'No token found' }) }
+                    return;
+                }
+
+                const valid = await verifyToken(isTokenValid);
+                if (isMounted) { setAuthState({ isValid: valid, isLoading: false, error: valid ? null : 'Invalid token' }) }
+
+            } catch (error) {
+                if (isMounted) {
+                    setAuthState({ isValid: false, isLoading: false, error: error.message });
+                }
+            }
+        };
+
+        checkToken();
+        return () => { isMounted = false };
+
+    }, [location, decryptData, verifyToken]);
+
+    if (authState.isLoading) {
+        return <span className='d-flex align-items-center justify-content-center vh-100'>Loading...</span>;
     }
-};
+
+    if (!authState.isValid) {
+        localStorage.removeItem("roots");
+        return <Navigate to="/login" state={{ from: location.pathname }} replace />;
+    }
+
+    return children ? children : <Outlet />;
+}

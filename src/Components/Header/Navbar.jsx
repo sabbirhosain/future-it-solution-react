@@ -8,10 +8,12 @@ import { BiLogOut } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { SlSettings } from "react-icons/sl";
 import './Navbar.css'
+import { useAppContextProvider } from "../../Context/Context";
 
 const Navbar = () => {
+  const { logOut } = useAppContextProvider()
+
   const [isSticky, setIsSticky] = useState(false);
-  const logout = () => { confirm('Are You Sure ? You Want to Logout.') }
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 100);
@@ -77,7 +79,7 @@ const Navbar = () => {
                 <NavLink to="/project" className='nav-link nav_link'>Project</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/premium-tools" className='nav-link nav_link'>Premium Tools</NavLink>
+                <NavLink to="/premium-tools" className='nav-link nav_link'>Free Tools</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink to="/contact" className='nav-link nav_link'>Contact</NavLink>
@@ -88,7 +90,7 @@ const Navbar = () => {
               <div className="btn-group">
                 <button type="button" className="nav_btn bg-danger rounded-0 dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false"> Sign in </button>
                 <ul className="dropdown-menu dropdown-menu-end mt-2 py-0 rounded-0">
-                  <li> <button type="button" className="dropdown-item d-flex align-items-center gap-2" onClick={logout}><BiLogOut /> Logout </button> </li>
+                  <li> <button type="button" className="dropdown-item d-flex align-items-center gap-2" onClick={logOut}><BiLogOut /> Logout </button> </li>
                   <hr className="dropdown-divider p-0 m-0" />
                   <li> <Link to='/dashboard' className="dropdown-item d-flex align-items-center gap-2"><MdOutlineDashboardCustomize /> Dashboard </Link> </li>
                   <hr className="dropdown-divider p-0 m-0" />

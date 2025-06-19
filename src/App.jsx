@@ -23,8 +23,8 @@ import OrderConfirm from "./Pages/OrderConfirm/OrderConfirm"
 import MeetingSchedule from "./Pages/Dashboard/MeetingSchedule"
 import { ToastContainer } from "react-toastify"
 import { ProtectedRoute, useAppContextProvider } from "./Context/Context"
-import "./App.css"
 import axios from "axios"
+import "./App.css"
 
 
 const App = () => {
@@ -32,9 +32,9 @@ const App = () => {
   const { decryptData } = useAppContextProvider();
   const encryptedToken = localStorage.getItem("roots");
   const decryptToken = encryptedToken ? decryptData(encryptedToken) : null;
-
+  const token = decryptToken?.accessToken;
+  if (token) { axios.defaults.headers.common['Authorization'] = `Bearer ${token}` }
   axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
-  axios.defaults.headers.common['Authorization'] = `Bearer ${decryptToken?.accessToken}`;
   axios.defaults.headers.post['Content-Type'] = 'application/json';
 
   return (
