@@ -73,7 +73,6 @@ const Login = () => {
                 <div className="row justify-content-center w-100">
                     <div className="col-md-4">
                         <form onSubmit={handleSubmit} className='shadow-sm bg-white p-4'>
-                            <h4 className='text-center py-4'>Login Now</h4>
                             <div className="row">
                                 <div className="col-md-12 mb-3">
                                     <label className='form-label'>Email Address</label>
@@ -88,8 +87,8 @@ const Login = () => {
                                     <small className="text-danger">{fieldError}</small>
                                 </div>
                                 <div className="col-md-12 mt-3">
-                                    <button type="submit" className='btn btn-success rounded-0 w-100' disabled={loading}>{loading ? 'Please Wait...' : 'Login Now'}</button>
-                                    <p className='text-center mt-4'>I don't have an account <Link to='/register'>Register</Link></p>
+                                    <button type="submit" className='btn btn-success rounded-0 w-100' disabled={loading}>{loading ? 'Please Wait...' : 'Sign In'}</button>
+                                    <p className='text-center m-0 mt-4'>I don't have an account <Link to='/register'>Register</Link></p>
                                 </div>
                             </div>
                         </form>
