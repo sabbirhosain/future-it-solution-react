@@ -17,20 +17,21 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const { encryptData, decryptData } = useAppContextProvider();
 
-    // if user is already login than redirect dashboad page
     useEffect(() => {
-        const storedData = localStorage.getItem('roots');
-        if (storedData) {
+        const checkAuth = async () => {
+            const storedData = localStorage.getItem('roots');
+            if (!storedData) return;
+
             try {
-                const decryptedData = decryptData(storedData);
-                if (decryptedData && decryptedData?.access_token) {
-                    navigate('/');
-                }
+                const decryptedData = await decryptData(storedData);
+                if (decryptedData?.accessToken) { navigate('/') }
             } catch (error) {
                 console.error('Error decrypting data:', error);
                 localStorage.removeItem('roots');
             }
-        }
+        };
+
+        checkAuth();
     }, [navigate, decryptData]);
 
 

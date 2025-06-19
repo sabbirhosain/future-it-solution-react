@@ -5,19 +5,25 @@ import { MdWifiCalling3, MdOutlineDashboardCustomize } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
-import { CgProfile } from "react-icons/cg";
 import { SlSettings } from "react-icons/sl";
-import './Navbar.css'
 import { useAppContextProvider } from "../../Context/Context";
+import './Navbar.css'
 
 const Navbar = () => {
-  const { logOut } = useAppContextProvider()
-
+  const { logOut, decryptData } = useAppContextProvider()
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+
+  // Check authentication status
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 100);
-    };
+    const encryptedToken = localStorage.getItem("roots");
+    const decryptToken = encryptedToken ? decryptData(encryptedToken) : null;
+    setIsAuthenticated(!!decryptToken?.accessToken);
+  }, [decryptData]);
+
+
+  useEffect(() => {
+    const handleScroll = () => { setIsSticky(window.scrollY > 100) };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -87,8 +93,8 @@ const Navbar = () => {
             </ul>
             <div className="d-flex align-items-center gap-2">
               <Link to='/appointment' className='nav_btn'>Appointment</Link>
-              <div className="btn-group">
-                <button type="button" className="nav_btn bg-danger rounded-0 dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false"> Sign in </button>
+              {isAuthenticated ? <div className="btn-group">
+                <button type="button" className="nav_btn bg-danger rounded-0 dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Account</button>
                 <ul className="dropdown-menu dropdown-menu-end mt-2 py-0 rounded-0">
                   <li> <button type="button" className="dropdown-item d-flex align-items-center gap-2" onClick={logOut}><BiLogOut /> Logout </button> </li>
                   <hr className="dropdown-divider p-0 m-0" />
@@ -96,7 +102,7 @@ const Navbar = () => {
                   <hr className="dropdown-divider p-0 m-0" />
                   <li> <Link to='/profile' className="dropdown-item d-flex align-items-center gap-2"><SlSettings />Setting</Link></li>
                 </ul>
-              </div>
+              </div> : <Link to='/login' className='nav_btn bg-danger'>Sign in</Link>}
             </div>
           </div>
         </div>
