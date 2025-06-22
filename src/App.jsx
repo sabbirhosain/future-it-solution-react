@@ -22,7 +22,7 @@ import LiveSupport from "./Pages/Dashboard/LiveSupport"
 import OrderConfirm from "./Pages/OrderConfirm/OrderConfirm"
 import MeetingSchedule from "./Pages/Dashboard/MeetingSchedule"
 import { ToastContainer } from "react-toastify"
-import { ProtectedRoute, useAppContextProvider } from "./Context/Context"
+import { ProtectedRoute, useAppContextProvider } from "./Context/AuthContext"
 import axios from "axios"
 import "./App.css"
 

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 import { SlSettings } from "react-icons/sl";
-import { useAppContextProvider } from "../../Context/Context";
+import { useAppContextProvider } from "../../Context/AuthContext";
 import './Navbar.css'
 
 const Navbar = () => {

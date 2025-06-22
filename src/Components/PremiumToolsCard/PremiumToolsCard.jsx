@@ -1,19 +1,19 @@
 import { TbListDetails } from "react-icons/tb";
 import { FaStar } from "react-icons/fa";
-import image from '../../assets/tools-image/1.png'
+import DEFAULT_IMAGE from '../../assets/tools-image/1.png'
 import { Link } from "react-router-dom";
 import './PremiumToolsCard.css';
 
 const PremiumToolsCard = ({ item }) => {
-  const { _id, tools_name, short_description, total_rating, total_sold, pricing_tiers } = item || {};
+  const { _id, tools_name, short_description, total_rating, total_sold, pricing_tiers, attachment } = item || {};
   const { price, currency, discount } = pricing_tiers[0] || {};
 
   return (
     <div className="col-md-3 mb-5">
       <div className='tools_service_card_box'>
         <div className='tools_service_img_box'>
-          <img src={image} className="img-fluid" alt="Tools Image" />
-          {discount && <span className='tools_service_discount'>- {discount}% OFF</span>}
+          <img src={attachment?.secure_url || DEFAULT_IMAGE} className="img-fluid" alt={tools_name ?? 'Tools Image'} />
+          {discount && <span className='tools_service_discount bg-danger'>- {discount}% OFF</span>}
         </div>
         <div className="d-flex align-items-center mt-1">
           <span className='tools_service_price'>{price} {currency}</span>

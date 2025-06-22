@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import { MdOutlineDashboardCustomize } from "react-icons/md";
 import { MdOutlinePrivacyTip, MdManageAccounts } from "react-icons/md";
+import MeetingScheduleTable from '../../Components/Dashboard/MeetingSchedule/MeetingScheduleTable';
 import { TfiShoppingCartFull } from "react-icons/tfi";
 import { TbReport } from "react-icons/tb";
 import { MdSupportAgent } from "react-icons/md";
 import Layout from '../../Layout/Layout'
-import './Dashboard.css'
-import MyOrderTable from './MyOrderTable';
 import { useEffect, useState } from 'react';
+import './Dashboard.css'
 
 const MeetingSchedule = () => {
     const [loading, setLoading] = useState(true);
@@ -83,7 +83,7 @@ const MeetingSchedule = () => {
                             </div>
 
                             <div className='mt-4'>
-                                <MyOrderTable />
+                                <MeetingScheduleTable />
                             </div>
                         </div>
                     </div>

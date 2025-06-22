@@ -1,6 +1,7 @@
 import Layout from '../../Layout/Layout'
 import imageDetails from '../../assets/tools-image/tools_details.png'
 import { CgDetailsMore } from "react-icons/cg";
+import PremiumToolsBooking from '../../Components/PremiumToolsCard/PremiumToolsBooking';
 import { GoDot } from "react-icons/go";
 import { IoCheckmarkDoneOutline } from 'react-icons/io5';
 import ClientReview from '../../Components/PremiumToolsCard/ClientReview';
@@ -12,7 +13,6 @@ import { useParams } from 'react-router-dom';
 import { premium_tools_single } from '../../Context/Base_Api_Url';
 import axios from 'axios';
 import './PremiumToolsDetails.css'
-import PremiumToolsBooking from '../../Components/PremiumToolsCard/PremiumToolsBooking';
 
 const PremiumToolsDetails = () => {
     const { id } = useParams();

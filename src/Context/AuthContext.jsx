@@ -2,10 +2,10 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import CryptoJS from 'crypto-js';
 import { Outlet, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { premium_tools_list, verify_token } from './Base_Api_Url';
+import { verify_token } from './Base_Api_Url';
 
 const AppContextProvider = createContext()
-const Context = ({ children }) => {
+const AuthContext = ({ children }) => {
 
     const navigate = useNavigate();
     const SECRET_KEY = import.meta.env.VITE_CRYPTOJS_SECRET_KEY || 'YourFallbackSecretKey';
@@ -51,6 +51,8 @@ const Context = ({ children }) => {
 
 
 
+
+
     // User Logout
     const logOut = () => {
         const confirmLogout = window.confirm("Are you sure you want to log out?");
@@ -69,7 +71,7 @@ const Context = ({ children }) => {
     )
 }
 
-export default Context
+export default AuthContext
 
 // coustom hooks
 export const useAppContextProvider = () => {
