@@ -9,7 +9,7 @@ const PremiumToolsCard = ({ item }) => {
   const { price, currency, discount } = pricing_tiers[0] || {};
 
   return (
-    <div className="col-md-3 mb-5">
+    <div className="col-md-4 mb-5">
       <div className='tools_service_card_box'>
         <div className='tools_service_img_box'>
           <img src={attachment?.secure_url || DEFAULT_IMAGE} className="img-fluid" alt={tools_name ?? 'Tools Image'} />

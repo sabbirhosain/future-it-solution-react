@@ -73,17 +73,6 @@ const PremiumTools = () => {
 
   return (
     <Layout title='Premium Tools'>
-      <section className='page_heading_bg'>
-        <div className="container">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-md-7">
-              <h2 className='page_heading_tagline'><IoCheckmarkDoneOutline className='page_heading_tagline_icon' />Premium Tools</h2>
-              <span className='page_heading_title'>Smart solution to <span className='page_heading_title_color'>build a outstanding </span>performance easily.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className='premium_tools_section'>
         <div className="container">
 
