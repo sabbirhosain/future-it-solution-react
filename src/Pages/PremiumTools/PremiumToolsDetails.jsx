@@ -1,22 +1,17 @@
 import Layout from '../../Layout/Layout'
-import imageDetails from '../../assets/tools-image/tools_details.png'
-import { CgDetailsMore } from "react-icons/cg";
-import PremiumToolsBooking from '../../Components/PremiumToolsCard/PremiumToolsBooking';
-import { GoDot } from "react-icons/go";
-import { IoCheckmarkDoneOutline } from 'react-icons/io5';
-import ClientReview from '../../Components/PremiumToolsCard/ClientReview';
-import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
-import { FaStar } from 'react-icons/fa';
-import { CiEdit } from 'react-icons/ci';
+import { item_details } from '../../Context/Base_Api_Url';
+import { FaRegHandPointRight, FaStar } from 'react-icons/fa';
+import DEFAULT_IMG from '../../assets/tools_details.png'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { premium_tools_single } from '../../Context/Base_Api_Url';
 import axios from 'axios';
+import { TbArrowBadgeRight } from 'react-icons/tb';
+import ToolsPackage from '../../Components/ToolsPackage/ToolsPackage';
 import './PremiumToolsDetails.css'
 
 const PremiumToolsDetails = () => {
     const { id } = useParams();
-    const [premiumTools, setPremiumTools] = useState(null);
+    const [premiumTools, setPremiumTools] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [handleError, setHandleError] = useState(null);
 
@@ -24,13 +19,16 @@ const PremiumToolsDetails = () => {
         const getPermiumTools = async () => {
             try {
                 setIsLoading(true);
-                const response = await axios.get(`${premium_tools_single}${id}`);
-                if (response?.data) {
+                setHandleError(null);
+
+                const response = await axios.get(`${item_details}${id}`);
+                if (response && response.data) {
                     setPremiumTools(response.data.payload);
                 }
             } catch (error) {
                 console.log(error.message);
-                setHandleError(error.response?.data || "Something went wrong");
+                setHandleError(error.response.data || "Something went wrong");
+
             } finally {
                 setIsLoading(false);
             }
@@ -38,179 +36,89 @@ const PremiumToolsDetails = () => {
         getPermiumTools();
     }, [id]);
 
+
     if (isLoading) {
         return (
             <div className="d-flex justify-content-center align-items-center vh-100">
-                <div className="spinner-grow text-success" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
+                <span>Loading...</span>
             </div>
-        );
-    }
-
-    if (handleError) {
-        return (
-            <Layout>
-                <div className="container text-center py-5">
-                    <div className="alert alert-danger">{handleError}</div>
-                </div>
-            </Layout>
-        );
-    }
-
-    if (!premiumTools) {
-        return (
-            <Layout>
-                <div className="container text-center py-5">
-                    <div className="alert alert-info">No premium tool found</div>
-                </div>
-            </Layout>
         );
     }
 
     return (
         <Layout title='Premium Tools'>
-            <section className='page_heading_bg'>
+            <section className='tools_details_section'>
                 <div className="container">
-                    <div className="row align-items-center justify-content-center">
-                        <div className="col-md-7">
-                            <h2 className='page_heading_tagline'> <IoCheckmarkDoneOutline className='page_heading_tagline_icon' /> {premiumTools.tools_name}</h2>
-                            <span className='page_heading_title'>{premiumTools.short_description}</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className='premium_tools_details'>
-                <div className="container">
-                    <div className="row justify-content-between">
-                        <div className="col-md-5">
-                            <img src={imageDetails} className='img-fluid' alt="Tools Details" />
-                        </div>
-                        <div className="col-md-7">
-                            <div className="ps-md-4">
-                                <h2 className='tools_details_title'>{premiumTools.tools_name}</h2>
-                                <hr className='hr' />
-                                <p className='tools_details_peragraph'>{premiumTools.long_description}</p>
-                                <h2 className='tools_details_section_tagline'> <CgDetailsMore className='tools_details_section_tagline_icon' /> Additional details</h2>
-                                <div className='ms-3 mb-3'>
-                                    <div className="row">
-                                        {premiumTools.additional_feature.map((feature, index) => (
-                                            <div className="col-6" key={index}>
-                                                <span className='additional_details_list'><GoDot /> {feature}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                                <h2 className='tools_details_section_tagline'>
-                                    <CgDetailsMore className='tools_details_section_tagline_icon' />
-                                    Package details
-                                </h2>
-                                <div className='ms-3'>
-                                    {premiumTools.pricing_tiers.map((tier, index) => (
-                                        <div className="col-12" key={index}>
-                                            <span className='additional_details_list'>
-                                                <GoDot />
-                                                <strong>{tier.package_name} = Quentity :  {tier.quantity} = Price : {tier.price} {tier.currency}</strong> = <strong>Expired</strong> : {tier.expired} {tier.expired_type}
-                                                {tier.discount > 0 && (
-                                                    <span className='text-danger ms-2'>({tier.discount}% OFF)</span>
-                                                )}
-                                            </span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className='premium_tools_booking'>
-                <div className="container">
-                    <div className='row'>
+                    <div className="row">
                         <div className="col-md-6">
-                            <div className="px-4">
-                                <h2 className='tools_details_section_tagline'>
-                                    <CgDetailsMore className='tools_details_section_tagline_icon' />
-                                    Important Note
-                                </h2>
-                                <p className='tools_details_peragraph'>{premiumTools.important_note}</p>
-                                <h2 className='tools_details_section_tagline'>
-                                    <CgDetailsMore className='tools_details_section_tagline_icon' />
-                                    Contact Customer Support (Only Message Allow)
-                                </h2>
-                                <a href="" className='btn btn-success premium_tools_whatsapp_btn w-25'>WhatsApp</a>
+                            <img
+                                src={premiumTools?.attachment?.secure_url || DEFAULT_IMG}
+                                onError={(e) => e.target.src = DEFAULT_IMG}
+                                className='tools_details_img'
+                                alt={premiumTools?.item_name || 'Image'}
+                            />
+                        </div>
+                        <div className="col-md-6">
+                            <h1 className='tools_details_title'>{premiumTools ? premiumTools.item_name : ''}</h1>
+                            <hr className='hr' />
+                            <h5 className='tools_details_section_tagline'> <FaRegHandPointRight className='tools_details_section_tagline_icon' /> Short Description</h5>
+                            <p className='tools_details_short_description'>{premiumTools ? premiumTools.short_description : ''}</p>
+                            <h5 className='tools_details_section_tagline'> <FaRegHandPointRight className='tools_details_section_tagline_icon' /> Additional features</h5>
+                            <div className="row">
+
+                                {Array.isArray(premiumTools.features) && premiumTools.features.length > 0 ? (
+                                    premiumTools.features.map((feature, index) => (
+                                        <div className="col-6" key={index}>
+                                            <span className='additional_details_list'><TbArrowBadgeRight /> {feature}</span>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className="col-12">
+                                        <p>No features available.</p>
+                                    </div>
+                                )}
+
                             </div>
                         </div>
-                        <PremiumToolsBooking premiumTools={premiumTools} />
                     </div>
                 </div>
             </section>
 
-            <section className='premium_tools_client_review'>
+            <section className='tools_details_packages'>
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-12">
-                            <div className='tools_reviews'>
-                                <h2 className='client_reviews_title'>Client Reviews</h2>
-                                <div className="row align-items-center justify-content-between">
-                                    <div className="col-md-3">
-                                        <div className="d-flex align-items-center gap-2 mb-2">
-                                            <h1 className='tools_reviews_reating'>{premiumTools.total_rating.toFixed(1)}</h1><div>
-                                                <div className='tools_reviews_star'>
-                                                    {[...Array(5)].map((_, i) => (
-                                                        <FaStar key={i} color={i < Math.floor(premiumTools.total_rating) ? 'orange' : 'lightgray'} />
-                                                    ))}
-                                                </div>
-                                                <span className='tools_total_reviews'>{premiumTools.reviews.length} Reviews</span></div>
-                                        </div>
-                                        <button type='button' className='btn btn-success rounded-0 w-75 btn-sm d-flex align-items-center justify-content-center gap-2'> <CiEdit />Write a Review </button>
-                                    </div>
 
-                                    <div className="col-md-5">
-                                        {[5, 4, 3, 2, 1].map((star) => {
-                                            const starCount = premiumTools.reviews.filter(
-                                                review => review.rating === star
-                                            ).length;
-                                            const percentage = (starCount / premiumTools.reviews.length) * 100;
+                        {Array.isArray(premiumTools.packages) && premiumTools.packages.map((data, index) => (<ToolsPackage key={index} data={data} item={premiumTools} />))}
 
-                                            return (
-                                                <div className='d-flex align-items-center gap-3 py-1' key={star}>
-                                                    <span className='d-flex align-items-center gap-2 tools_total_reviews'>
-                                                        {star} <FaStar style={{ color: 'orange' }} />
-                                                    </span>
-                                                    <div className='progress w-100 tools_review_progress' role="progressbar">
-                                                        <div
-                                                            className='progress-bar tools_review_progress_bar'
-                                                            style={{ width: `${percentage}%` }}
-                                                        />
-                                                    </div>
-                                                    <span className='tools_total_reviews'>{starCount}</span>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="d-flex align-items-center justify-content-end gap-2 mb-2">
-                        <button type='button' className='btn btn-outline-success btn-sm rounded-0'><BiLeftArrow /></button>
-                        <button type='button' className='btn btn-outline-success btn-sm rounded-0'><BiRightArrow /></button>
-                    </div>
-                    <div className="row">
-                        {premiumTools.reviews.length > 0 ? (
-                            premiumTools.reviews.map((review, index) => (
-                                <ClientReview key={index} review={review} />
-                            ))
-                        ) : (
-                            <div className="col-12 text-center py-4">
-                                <p>No reviews yet. Be the first to review!</p>
-                            </div>
-                        )}
                     </div>
                 </div>
             </section>
+
+            <section className='tools_details_description'>
+                <div className="container">
+                    <div className="row mb-5">
+                        <div className="col-md-12">
+                            <h5 className='tools_details_section_tagline'> <FaRegHandPointRight className='tools_details_section_tagline_icon' />Long Description</h5>
+                            <p className='tools_details_long_description'>{premiumTools ? premiumTools.long_description : ''}</p>
+                        </div>
+                    </div>
+                    <div className="row mb-5">
+                        <div className="col-md-12">
+                            <h5 className='tools_details_section_tagline text-danger'> <FaRegHandPointRight className='tools_details_section_tagline_icon text-danger' />Important Note</h5>
+                            <p className='tools_details_long_description'>{premiumTools ? premiumTools.notes : ''}</p>
+                        </div>
+                    </div>
+                    <div className="row justify-content-center">
+                        <div className="col-md-6">
+                            <div className='text-center'>
+                                <p className='tools_details_contact_support'>Contact Customer Support (Only Message Allow)</p>
+                                <a href='' className='tools_details_contact_support_btn'>WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </Layout>
     )
 }

@@ -1,15 +1,41 @@
-.premium_tools_details {
-    padding-top: 80px;
-    padding-bottom: 50px;
+.tools_details_section {
+    width: 100%;
+    padding: 80px 0;
+}
+
+.tools_details_img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.tools_details_title {
+    color: var(--primary-color);
+    font-size: 35px;
+    font-weight: 600;
+    font-family: var(--primary-fonts);
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.tools_details_short_description {
+    color: black;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: var(--primary-fonts);
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    padding-bottom: 20px;
 }
 
 .tools_details_section_tagline {
     color: black;
-    font-size: 15px;
-    font-weight: 400;
-    font-family: var(--secondary-fonts);
+    font-size: 18px;
+    font-weight: 600;
+    font-family: var(--primary-fonts);
     text-transform: capitalize;
     letter-spacing: 2px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -20,29 +46,6 @@
     font-size: 18px;
 }
 
-.tools_details_title {
-    color: var(--primary-color);
-    font-size: 42px;
-    font-weight: 500;
-    font-family: var(--secondary-fonts);
-    text-transform: capitalize;
-    letter-spacing: 2px;
-}
-
-.tools_details_title_color {
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-.tools_details_peragraph {
-    color: black;
-    font-size: 15px;
-    font-weight: 400;
-    font-family: var(--primary-fonts);
-    text-transform: capitalize;
-    letter-spacing: 1px;
-}
-
 .additional_details_list {
     color: black;
     font-size: 15px;
@@ -50,76 +53,54 @@
     font-family: var(--primary-fonts);
     text-transform: capitalize;
     letter-spacing: 1px;
-    display: block;
-    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
 }
 
-.premium_tools_booking {
-    padding: 20px 0;
+.tools_details_packages {
+    width: 100%;
+    padding: 20px 0 50px 0;
 }
 
-.premium_tools_whatsapp_btn {
+.tools_details_description {
+    width: 100%;
+    padding: 20px 0 50px 0;
+}
+
+.tools_details_long_description {
+    color: black;
     font-size: 15px;
     font-weight: 400;
     font-family: var(--primary-fonts);
     text-transform: capitalize;
     letter-spacing: 1px;
-    border-radius: 0px;
-    margin: 30px auto;
-    display: block;
+    padding-bottom: 20px;
+    text-align: justify;
+    hyphens: auto;
 }
 
-.premium_tools_client_review {
-    padding-bottom: 100px;
-}
-
-.tools_reviews {
-    padding: 30px 50px;
-    background-color: #f8f8f8;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-    margin: 50px 0;
-}
-
-.client_reviews_title {
-    color: var(--primary-color);
+.tools_details_contact_support {
+    color: black;
     font-size: 18px;
-    letter-spacing: 400;
-    font-family: var(--secondary-fonts);
+    font-weight: 600;
+    font-family: var(--primary-fonts);
     text-transform: capitalize;
     letter-spacing: 1px;
-    margin: 0;
-    padding: 0;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-.tools_reviews_reating {
-    font-size: 50px;
-    letter-spacing: 400;
-    font-family: var(--secondary-fonts);
-    padding: 0;
-    margin: 0;
-}
-
-.tools_reviews_star {
-    color: orange;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 2px;
-}
-
-.tools_total_reviews {
-    color: black;
-    font-size: 14px;
+.tools_details_contact_support_btn {
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
     font-family: var(--primary-fonts);
-    padding: 0;
-    margin: 0;
-}
-
-.tools_review_progress {
-    height: 10px;
-    background-color: white;
-}
-
-.tools_review_progress_bar {
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    text-align: center;
     background-color: var(--primary-color);
+    padding: 8px 16px;
+    display: inline-block;
 }

@@ -1,13 +1,11 @@
 import PremiumToolsCard from '../../Components/PremiumToolsCard/PremiumToolsCard'
-import { IoCheckmarkDoneOutline } from 'react-icons/io5';
+import { item_show } from '../../Context/Base_Api_Url';
 import { useEffect, useState } from 'react';
-import { premium_tools_list } from '../../Context/Base_Api_Url';
 import Layout from '../../Layout/Layout'
 import axios from 'axios';
 import './PremiumTools.css';
 
 const PremiumTools = () => {
-  // All Permium Tools List
   const [handleError, setHandleError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [premiumTools, setPremiumTools] = useState({});
@@ -19,8 +17,7 @@ const PremiumTools = () => {
       setIsLoading(true);
       setHandleError(null);
 
-      const response = await axios.get(`${premium_tools_list}?page=${page}`);
-
+      const response = await axios.get(`${item_show}?page=${page}`);
       if (response && response.data) {
         setPremiumTools(response.data.payload);
         setTotalPages(response.data.pagination?.total_page || 1);
@@ -35,41 +32,16 @@ const PremiumTools = () => {
   }
 
   useEffect(() => { getPermiumTools(currentPage) }, [currentPage]);
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(prev => prev - 1);
-    }
-  }
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(prev => prev + 1);
-    }
-  }
+  const handlePrevPage = () => { if (currentPage > 1) { setCurrentPage(prev => prev - 1) } }
+  const handleNextPage = () => { if (currentPage < totalPages) { setCurrentPage(prev => prev + 1) } }
 
   if (isLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
-        <div className="spinner-grow text-success" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
+        <span>Loading...</span>
       </div>
     );
   }
-
-  if (handleError) {
-    return (
-      <Layout title='Error'>
-        <div className="container py-5">
-          <div className="alert alert-danger text-center">
-            {handleError}
-            <button className="btn btn-sm btn-outline-danger ms-3" onClick={() => getPermiumTools(currentPage)}>Retry</button>
-          </div>
-        </div>
-      </Layout>
-    );
-  }
-
 
   return (
     <Layout title='Premium Tools'>
@@ -82,24 +54,31 @@ const PremiumTools = () => {
             </div>
           ) : (
             <div className="text-center py-5">
-              <span>No premium tools available</span>
+              <span>No Data Available</span>
             </div>
           )}
 
-        </div>
-      </section>
+          {totalPages > 1 && (
+            <div className="d-flex align-items-center justify-content-center mt-4">
+              <nav aria-label="Page navigation example">
+                <ul className="pagination">
+                  <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                    <button className="page-link" onClick={handlePrevPage} aria-label="Previous" disabled={currentPage === 1}> <span aria-hidden="true">«</span> </button>
+                  </li>
 
-      <section className='pagination_section mb-5'>
-        <div className="container">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-md-6">
-              <div className='d-flex align-items-center justify-content-center gap-3'>
-                <button onClick={handlePrevPage} className='btn btn-success rounded-0 btn-sm' disabled={currentPage === 1} > Prev </button>
-                <span>{currentPage} / {totalPages}</span>
-                <button onClick={handleNextPage} className='btn btn-success rounded-0 btn-sm' disabled={currentPage === totalPages} > Next </button>
-              </div>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                    <li key={page} className={`page-item ${currentPage === page ? 'active' : ''}`}>
+                      <button className="page-link" onClick={() => setCurrentPage(page)}>{page}</button>
+                    </li>
+                  ))}
+
+                  <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                    <button className="page-link" onClick={handleNextPage} aria-label="Next" disabled={currentPage === totalPages} > <span aria-hidden="true">»</span></button>
+                  </li>
+                </ul>
+              </nav>
             </div>
-          </div>
+          )}
         </div>
       </section>
     </Layout>

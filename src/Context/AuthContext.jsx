@@ -48,6 +48,14 @@ const AuthContext = ({ children }) => {
         }
     };
 
+    // checkout data
+    const [selectedPackage, setSelectedPackage] = useState({});
+    const [itemDetails, setItemDetails] = useState({});
+
+    const selectPackage = (pkg, item) => {
+        setSelectedPackage(pkg);
+        setItemDetails(item);
+    };
 
 
 
@@ -65,7 +73,7 @@ const AuthContext = ({ children }) => {
 
 
     return (
-        <AppContextProvider.Provider value={{ encryptData, decryptData, verifyToken, logOut }}>
+        <AppContextProvider.Provider value={{ encryptData, decryptData, verifyToken, logOut, selectedPackage, itemDetails, selectPackage }}>
             {children}
         </AppContextProvider.Provider>
     )
