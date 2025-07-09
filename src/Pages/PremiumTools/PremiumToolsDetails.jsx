@@ -2,11 +2,11 @@ import Layout from '../../Layout/Layout'
 import { item_details } from '../../Context/Base_Api_Url';
 import { FaRegHandPointRight, FaStar } from 'react-icons/fa';
 import DEFAULT_IMG from '../../assets/tools_details.png'
+import ToolsPackage from '../../Components/ToolsPackage/ToolsPackage';
 import { useEffect, useState } from 'react';
+import { TbArrowBadgeRight } from 'react-icons/tb';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { TbArrowBadgeRight } from 'react-icons/tb';
-import ToolsPackage from '../../Components/ToolsPackage/ToolsPackage';
 import './PremiumToolsDetails.css'
 
 const PremiumToolsDetails = () => {
@@ -52,10 +52,7 @@ const PremiumToolsDetails = () => {
                     <div className="row">
                         <div className="col-md-6">
                             <img
-                                src={premiumTools?.attachment?.secure_url || DEFAULT_IMG}
-                                onError={(e) => e.target.src = DEFAULT_IMG}
-                                className='tools_details_img'
-                                alt={premiumTools?.item_name || 'Image'}
+                                src={premiumTools?.attachment?.secure_url || DEFAULT_IMG} onError={(e) => e.target.src = DEFAULT_IMG} className='tools_details_img' alt={premiumTools?.item_name || 'Image'}
                             />
                         </div>
                         <div className="col-md-6">

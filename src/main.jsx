@@ -7,7 +7,6 @@ import AppointmentContext from './Context/AppointmentContext.jsx'
 import AuthContext from './Context/AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
   <BrowserRouter>
     <AppointmentContext>
       <AuthContext>
@@ -15,5 +14,4 @@ createRoot(document.getElementById('root')).render(
       </AuthContext>
     </AppointmentContext>
   </BrowserRouter>
-  // </StrictMode>
 )
