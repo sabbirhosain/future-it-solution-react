@@ -1,0 +1,149 @@
+[
+  {
+    "id": "1",
+    "title": "Candidate & Lead Sourcing from Indeed",
+    "short_desc": "Top-quality, accurate candidate and company leads for recruiters and hiring managers.",
+    "long_desc": "With over 3 years of experience in candidate and lead sourcing, I provide 100% accurate and validated leads from platforms like Indeed, LinkedIn, Google, and ZipRecruiter. Whether you need specific job titles or company contacts, I help you find actively hiring companies and qualified candidates fast and reliably.",
+    "status": "available",
+    "tags": [
+      "Candidate Sourcing",
+      "Job Candidate Leads",
+      "Recruiter Leads",
+      "Recruiter Lead Generation",
+      "Talent Acquisition Leads"
+    ],
+    "fetchers": [
+      "Full Name",
+      "Candidate Role",
+      "Phone Number",
+      "E-mail Address",
+      "LinkedIn Profile",
+      "Location/Address",
+      "Resume/CV"
+    ],
+    "discount": "10",
+    "rating": "5",
+    "sold": "220",
+    "image": "/services/1.jpeg"
+  },
+  {
+    "id": "2",
+    "title": "LinkedIn, Indeed & ZipRecruiter Job Lead Sourcing",
+    "short_desc": "Providing top-quality candidate and company leads for recruiters",
+    "long_desc": "We are professional job candidate sourcing experts with over 3 years of experience. I specialize in sourcing highly targeted and 100% accurate leads from platforms like Indeed, LinkedIn, Google, and ZipRecruiter. Whether you're a recruiter, staffing agency, or hiring manager — I can help you connect with the right candidates or company contacts fast and efficiently.",
+    "status": "available",
+    "tags": [
+      "Indeed Leads",
+      "Recruiter Leads",
+      "LinkedIn Job Leads",
+      "Candidate Sourcing",
+      "Hiring Manager Leads"
+    ],
+    "fetchers": [
+      "Full Name",
+      "Job Title",
+      "Verified Email",
+      "Phone Number",
+      "Company Name",
+      "Website & Size",
+      "Job Vacancy Details",
+      "Location",
+      "Job Post Link"
+    ],
+    "discount": "10",
+    "rating": "4.6",
+    "sold": "120",
+    "image": "/services/2.jpeg"
+  },
+  {
+    "id": "3",
+    "title": "Professional YouTube SEO Services",
+    "short_desc": "Expert YouTube SEO with 5+ years experience to help your videos rank higher and get more views.",
+    "long_desc": "Are your great videos not getting the views they deserve? With over 5 years of expertise, I provide professional YouTube SEO services that improve your video visibility and organic growth. I offer comprehensive keyword research, optimized titles, tags, descriptions, related hashtags, LSI phrases, and social media integration. Additionally, I handle end screens, cards, subscribe buttons, and related video coding to maximize engagement. Order now and watch your channel grow! Note: Results typically take 3-4 weeks; combining with ads can speed up growth.",
+    "status": "available",
+    "tags": [
+      "YouTube SEO",
+      "Video Optimization",
+      "Video Ranking",
+      "Organic Growth",
+      "Video Promotion"
+    ],
+    "fetchers": [
+      "Video URL",
+      "Video Title",
+      "Video Description",
+      "Video Tags",
+      "Channel Name",
+      "Upload Date",
+      "Video Category",
+      "Thumbnail URL",
+      "Social Media Links",
+      "End Screen Elements",
+      "Cards",
+      "Subscriber Button"
+    ],
+    "discount": "10",
+    "rating": "4.6",
+    "sold": "120",
+    "image": "/services/3.jpeg"
+  },
+  {
+    "id": "4",
+    "title": "Hotel & Restaurant Decision Maker Lead Sourcing",
+    "short_desc": "Expert lead generation for hotel and restaurant decision makers with verified contacts.",
+    "long_desc": "We specialize in lead generation and data entry for the hotel and restaurant industry. With our expertise, we provide detailed contact information for key decision makers such as CEOs, Owners, Founders, Directors, Managers, and more. Get accurate data including names, emails, phone numbers, LinkedIn profiles, and business details to help you connect with the right people.",
+    "status": "available",
+    "tags": [
+      "Hotel Leads",
+      "Restaurant Leads",
+      "Decision Maker Leads",
+      "CEO Leads",
+      "LinkedIn Leads"
+    ],
+    "fetchers": [
+      "Hotel/Restaurant Name",
+      "Hotel/Restaurant Website",
+      "Hotel/Restaurant Phone Number",
+      "Address",
+      "First Name",
+      "Last Name",
+      "Title",
+      "Email",
+      "Phone Number",
+      "LinkedIn Profile"
+    ],
+    "discount": "10",
+    "rating": "4.6",
+    "sold": "120",
+    "image": "/services/4.jpeg"
+  },
+  {
+    "id": "5",
+    "title": "Targeted B2B Lead Generation & LinkedIn Prospecting",
+    "short_desc": "7+ years of experience delivering fresh, GEO-targeted B2B and LinkedIn leads tailored to your market.",
+    "long_desc": "With over 7 years of expertise in lead generation, I provide highly qualified and geographically targeted B2B leads and LinkedIn prospect lists based on your specific market needs. Using trusted tools like Crunchbase, LinkedIn Sales Navigator, Yelp, Manta, Zoominfo, Name2Email, Kendo, and Neverbounce, I ensure the leads are accurate and relevant. To get started, provide your target industries, contact titles, locations, and desired data fields, and I’ll deliver a comprehensive, ready-to-use lead list.",
+    "status": "available",
+    "tags": [
+      "B2B Leads",
+      "LinkedIn Leads",
+      "Lead Generation",
+      "Sales Leads",
+      "Geo-Targeted Leads"
+    ],
+    "fetchers": [
+      "Company Name",
+      "Company Website",
+      "Contact First Name",
+      "Contact Last Name",
+      "Contact Job Title",
+      "Contact E-mail Address",
+      "LinkedIn Profile URL",
+      "Company Phone Number",
+      "Company Address"
+    ],
+    "discount": "10",
+    "rating": "4.6",
+    "sold": "120",
+    "image": "/services/5.jpeg"
+  }
+]

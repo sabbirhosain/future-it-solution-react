@@ -58,6 +58,40 @@ const AuthContext = ({ children }) => {
     };
 
 
+    // our team
+    const [handleError, setHandleError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [ourTeam, setOurTeam] = useState([]);
+    const getOurTeam = async () => {
+        try {
+            setIsLoading(true);
+            setHandleError(null);
+            const response = await fetch("/team_database.json");
+            if (response.ok) {
+                const data = await response.json();
+                if (Array.isArray(data)) {
+                    setOurTeam(data);
+                } else {
+                    throw new Error("Invalid data format. Expected an array.");
+                }
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
+            setHandleError(error.message || "Something went wrong");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -73,7 +107,7 @@ const AuthContext = ({ children }) => {
 
 
     return (
-        <AppContextProvider.Provider value={{ encryptData, decryptData, verifyToken, logOut, selectedPackage, itemDetails, selectPackage }}>
+        <AppContextProvider.Provider value={{ encryptData, decryptData, verifyToken, logOut, selectedPackage, itemDetails, selectPackage, handleError, isLoading, ourTeam, getOurTeam }}>
             {children}
         </AppContextProvider.Provider>
     )

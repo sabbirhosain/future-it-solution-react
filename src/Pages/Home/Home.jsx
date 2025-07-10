@@ -15,11 +15,13 @@ import WhyChooseUs from "../../Components/WhyChooseUs/WhyChooseUs";
 import { useEffect, useState } from "react";
 import MeetOurClients from "../../Components/MeetOurClients/MeetOurClients";
 import './Home.css'
+import { useAppContextProvider } from '../../Context/AuthContext';
 
 const Home = () => {
-  const [showScrollBtn, setShowScrollBtn] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const { handleError, isLoading, ourTeam, getOurTeam } = useAppContextProvider()
+  useEffect(() => { getOurTeam() }, ['']);
 
+  const [showScrollBtn, setShowScrollBtn] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 500) {
@@ -111,10 +113,9 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <EmployeeCard />
-            <EmployeeCard />
-            <EmployeeCard />
-            <EmployeeCard />
+            {ourTeam.map((member) => (
+              <EmployeeCard key={member.id} member={member} />
+            ))}
           </div>
         </div>
       </section>

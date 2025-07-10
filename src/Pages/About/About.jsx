@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import AboutAgency from '../../Components/AboutAgency/AboutAgency'
 import EmployeeCard from '../../Components/EmployeeCard/EmployeeCard';
 import Layout from '../../Layout/Layout'
-import './About.css';
 import { IoCheckmarkDoneOutline } from 'react-icons/io5';
+import { useAppContextProvider } from '../../Context/AuthContext';
+import './About.css';
 
 const About = () => {
-  const [loading, setLoading] = useState(true);
-  
+  const { handleError, isLoading, ourTeam, getOurTeam } = useAppContextProvider()
+  useEffect(() => { getOurTeam() }, ['']);
+
   return (
     <Layout title='About Us'>
       <section className='about_agency'>
@@ -23,10 +25,9 @@ const About = () => {
             </div>
           </div>
           <div className="row">
-            <EmployeeCard />
-            <EmployeeCard />
-            <EmployeeCard />
-            <EmployeeCard />
+            {ourTeam.map((member) => (
+              <EmployeeCard key={member.id} member={member} />
+            ))}
           </div>
         </div>
       </section>

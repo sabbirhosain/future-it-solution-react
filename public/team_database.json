@@ -1,0 +1,70 @@
+[
+    {
+        "id": 1,
+        "name": "Md Sabbir Hosain",
+        "title": "Digital Marketing",
+        "role": "Co-Founder",
+        "image": "./teams/team3.png",
+        "social_media": [
+            {
+                "platform": "Facebook",
+                "url": "https://www.facebook.com/futureitsolution.info/"
+            },
+            {
+                "platform": "Linkedin",
+                "url": "https://www.linkedin.com/company/future-it-solution/"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Md Aynal Hossain",
+        "title": "Lead Genration & HR Recruiting",
+        "role": "CEO & Founder",
+        "image": "./teams/team.webp",
+        "social_media": [
+            {
+                "platform": "Facebook",
+                "url": "https://www.facebook.com/futureitsolution.info/"
+            },
+            {
+                "platform": "Linkedin",
+                "url": "https://www.linkedin.com/company/future-it-solution/"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Sree Pottoy Kumar",
+        "title": "Social Media Marketer",
+        "role": "Employee",
+        "image": "./teams/team.webp",
+        "social_media": [
+            {
+                "platform": "Facebook",
+                "url": "https://www.facebook.com/futureitsolution.info/"
+            },
+            {
+                "platform": "Linkedin",
+                "url": "https://www.linkedin.com/company/future-it-solution/"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Mst. Iftida Ahnaf",
+        "title": "Social Media Marketer",
+        "role": "Employee",
+        "image": "./teams/team.webp",
+        "social_media": [
+            {
+                "platform": "Facebook",
+                "url": "https://www.facebook.com/futureitsolution.info/"
+            },
+            {
+                "platform": "Linkedin",
+                "url": "https://www.linkedin.com/company/future-it-solution/"
+            }
+        ]
+    }
+]
