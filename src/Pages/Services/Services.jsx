@@ -1,14 +1,12 @@
 import Layout from '../../Layout/Layout'
 import ServiceCard from '../../Components/ServiceCard/ServiceCard'
-import { IoCheckmarkDoneOutline } from 'react-icons/io5'
-import './Services.css'
 import { useEffect, useState } from 'react'
+import './Services.css'
 
 const Services = () => {
   const [handleError, setHandleError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [services, setServices] = useState([]);
-  console.log(services);
 
   useEffect(() => {
     const getServices = async () => {
