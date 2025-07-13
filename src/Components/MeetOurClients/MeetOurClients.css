@@ -14,4 +14,5 @@
 .meet_our_team_img {
     width: 100%;
     height: auto;
+    filter: brightness(0.3);
 }

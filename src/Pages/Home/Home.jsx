@@ -18,8 +18,8 @@ import './Home.css'
 import { useAppContextProvider } from '../../Context/AuthContext';
 
 const Home = () => {
-  const { handleError, isLoading, ourTeam, getOurTeam } = useAppContextProvider()
-  useEffect(() => { getOurTeam() }, ['']);
+  const { handleError, isLoading, ourTeam, getOurTeam, handleError1, isLoading1, meetOurClient, getMeetOurClient } = useAppContextProvider()
+  useEffect(() => { getOurTeam(), getMeetOurClient() }, ['']);
 
   const [showScrollBtn, setShowScrollBtn] = useState(false);
   useEffect(() => {
@@ -136,12 +136,9 @@ const Home = () => {
             </div>
           </div>
           <div className="row align-items-center justify-content-center">
-            <MeetOurClients />
-            <MeetOurClients />
-            <MeetOurClients />
-            <MeetOurClients />
-            <MeetOurClients />
-            <MeetOurClients />
+            {meetOurClient.map((client) => (
+              <MeetOurClients key={client.id} clients={client} />
+            ))}
           </div>
         </div>
       </section>

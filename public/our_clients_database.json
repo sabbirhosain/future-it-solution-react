@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1",
+        "project_name": "CRM Database Cleanup",
+        "company_name": "BrightEdge Solutions",
+        "company_logo": "/our-clients/partner-01.png"
+    },
+    {
+        "id": "2",
+        "project_name": "LinkedIn Lead Sourcing",
+        "company_name": "GrowthHive Agency",
+        "company_logo": "/our-clients/partner-02.png"
+    },
+    {
+        "id": "3",
+        "project_name": "B2B Email List Building",
+        "company_name": "ProspectPath Inc.",
+        "company_logo": "/our-clients/partner-03.png"
+    },
+    {
+        "id": "4",
+        "project_name": "E-commerce Product Data Entry",
+        "company_name": "ShopNest Global",
+        "company_logo": "/our-clients/partner-04.png"
+    },
+    {
+        "id": "5",
+        "project_name": "Real Estate Leads Research",
+        "company_name": "UrbanVista Realty",
+        "company_logo": "/our-clients/partner-05.png"
+    },
+    {
+        "id": "6",
+        "project_name": "CRM Database Cleanup",
+        "company_name": "BrightEdge Solutions",
+        "company_logo": "/our-clients/partner-03.png"
+    },
+    {
+        "id": "7",
+        "project_name": "LinkedIn Lead Sourcing",
+        "company_name": "GrowthHive Agency",
+        "company_logo": "/our-clients/partner-01.png"
+    },
+    {
+        "id": "8",
+        "project_name": "B2B Email List Building",
+        "company_name": "ProspectPath Inc.",
+        "company_logo": "/our-clients/partner-05.png"
+    },
+    {
+        "id": "9",
+        "project_name": "E-commerce Product Data Entry",
+        "company_name": "ShopNest Global",
+        "company_logo": "/our-clients/partner-02.png"
+    },
+    {
+        "id": "10",
+        "project_name": "Real Estate Leads Research",
+        "company_name": "UrbanVista Realty",
+        "company_logo": "/our-clients/partner-03.png"
+    }
+]

@@ -1,10 +1,9 @@
 import './MeetOurClients.css'
-import ourClient from '../../assets/happy-clients/partner-03.png'
-const MeetOurClients = () => {
+const MeetOurClients = ({ clients }) => {
     return (
-        <div className='col-md-2 mb-3'>
+        <div className='col-md-2 mb-4'>
             <div className="meet_our_team_box">
-                <img src={ourClient} className='meet_our_team_img' alt="" />
+                <img src={clients.company_logo} className='meet_our_team_img' alt={clients.company_name} />
             </div>
         </div>
     )

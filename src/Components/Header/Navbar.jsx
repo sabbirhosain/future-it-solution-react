@@ -37,21 +37,21 @@ const Navbar = () => {
               <div className="d-flex align-items-center gap-4">
                 <div className="d-flex align-items-center gap-2">
                   <span className='top_header_phone_icon'><MdWifiCalling3 /></span>
-                  <a href="https://wa.me/+8801727147610?text=Hello%2C%20I%20want%20to%20know%20more%20about%20your%20services?" target="new" className='top_header_phone_text'>0172-7147 610</a>
+                  <a href="https://wa.me/+8801727147610?text=Hello%2C%20I%20want%20to%20know%20more%20about%20your%20services?" target="new" className='top_header_phone_text'>+880 178 0741 598</a>
                 </div>
                 <div className="d-flex align-items-center gap-2">
                   <span className='top_header_email_icon'><FaEnvelope /></span>
-                  <a href="mailto:example@gmail.com" className='top_header_email_text'>contact@futureitsolution.com</a>
+                  <a href="mailto:example@gmail.com" className='top_header_email_text'>contact.futureitsolution@gmail.com</a>
                 </div>
               </div>
             </div>
             <div className="col-4">
               <div className='navbar_social_media_box'>
-                <a href="" className='navbar_social_media_icon'><FaFacebookF /></a>
-                <a href="" className='navbar_social_media_icon'><FaLinkedinIn /></a>
-                <a href="" className='navbar_social_media_icon'><FaInstagram /></a>
-                <a href="" className='navbar_social_media_icon'><TbBrandFiverr /></a>
-                <a href="" className='navbar_social_media_icon'><SiUpwork /></a>
+                <a href='https://www.facebook.com/futureitsolution.info/' target="_new" className='navbar_social_media_icon'><FaFacebookF /></a>
+                <a href='https://www.linkedin.com/company/future-it-solution/' target="_new" className='navbar_social_media_icon'><FaLinkedinIn /></a>
+                <a href='https://www.fiverr.com/quick_devlopers' target="_new" className='navbar_social_media_icon'><FaInstagram /></a>
+                <a href='https://www.fiverr.com/quick_devlopers' target="_new" className='navbar_social_media_icon'><TbBrandFiverr /></a>
+                <a href='https://www.upwork.com/freelancers/~01389c689555473e23?viewMode=1' target="_new" className='navbar_social_media_icon'><SiUpwork /></a>
               </div>
             </div>
           </div>

@@ -21,26 +21,26 @@ const Footer = () => {
             </Link>
             <p className='footer_peragraph'>We are a results-driven digital agency focused on crafting innovative strategies, designing impactful experiences, and helping brands grow through creativity, technology, and a deep understanding of their audience.</p>
             <div className='footer_social_media_box'>
-              <Link to='#' className='footer_social_media_box_icon'><FaFacebookF /></Link>
-              <Link to='#' className='footer_social_media_box_icon'><FaLinkedinIn /></Link>
-              <Link to='#' className='footer_social_media_box_icon'><FaInstagram /></Link>
-              <Link to='#' className='footer_social_media_box_icon'><TbBrandFiverr /></Link>
-              <Link to='#' className='footer_social_media_box_icon'><SiUpwork /></Link>
+              <a href='https://www.facebook.com/futureitsolution.info/' target="_new" className='footer_social_media_box_icon'><FaFacebookF /></a>
+              <a href='https://www.linkedin.com/company/future-it-solution/' target="_new" className='footer_social_media_box_icon'><FaLinkedinIn /></a>
+              <a href='https://www.fiverr.com/quick_devlopers'  target="_new" className='footer_social_media_box_icon'><FaInstagram /></a>
+              <a href='https://www.fiverr.com/quick_devlopers' target="_new" className='footer_social_media_box_icon'><TbBrandFiverr /></a>
+              <a href='https://www.upwork.com/freelancers/~01389c689555473e23?viewMode=1' target="_new" className='footer_social_media_box_icon'><SiUpwork /></a>
             </div>
           </div>
           <div className="col-md-3 my-4 my-md-0">
             <h2 className='quick_view'>Contact Info</h2>
             <div className="d-flex align-items-center gap-2 mb-2">
               <span className='footer_phone_icon'><MdOutlinePhoneInTalk /></span>
-              <Link href="https://wa.me/+8801727147610?text=Hello%2C%20I%20want%20to%20know%20more%20about%20your%20services?" target="new" className='footer_phone_text'>0172-7147 610</Link>
+              <Link href="https://wa.me/+8801727147610?text=Hello%2C%20I%20want%20to%20know%20more%20about%20your%20services?" target="new" className='footer_phone_text'>+880 178 0741 598</Link>
             </div>
             <div className="d-flex align-items-center gap-2 mb-2">
               <span className='footer_email_icon'><FaRegEnvelope /></span>
-              <Link to="mailto:example@gmail.com" className='footer_email_text'>contact@futureitsolution.com</Link>
+              <Link to="mailto:example@gmail.com" className='footer_email_text'>contact.futureitsolution@gmail.com</Link>
             </div>
             <div className="d-flex gap-2">
               <span className='footer_location_icon'><RiUserLocationLine /></span>
-              <p className='footer_location_icon'>Chandipur Bazar, Bagha Rajshahi-6280, Bangladesh</p>
+              <p className='footer_location_icon'>Based in Bangladesh | Available Worldwide</p>
             </div>
           </div>
           <div className="col-md-4">
