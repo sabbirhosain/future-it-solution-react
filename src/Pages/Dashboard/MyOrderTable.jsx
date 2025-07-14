@@ -51,7 +51,7 @@ const MyOrderTable = () => {
                 <Link to='' className="btn btn-outline-primary rounded-0 btn-sm"><BsEyeFill /></Link>
                 <Link to='' className="btn btn-outline-success rounded-0 btn-sm"><BiEditAlt /></Link>
                 <button type="button" className="btn btn-outline-danger rounded-0 btn-sm"><BiTrash /></button>
-            </div>,
+            </div>
         }
     ];
 
