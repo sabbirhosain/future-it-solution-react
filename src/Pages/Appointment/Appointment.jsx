@@ -8,7 +8,6 @@ import Swal from 'sweetalert2';
 import './Appointment.css'
 
 const Appointment = () => {
-  // select date
   const today = new Date();
   const sevenDaysFromToday = new Date();
   sevenDaysFromToday.setDate(today.getDate() + 6);

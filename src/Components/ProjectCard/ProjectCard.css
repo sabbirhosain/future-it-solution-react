@@ -39,7 +39,7 @@
 
 .project_card_img {
     width: 100%;
-    max-height: 350px;
+    max-height: 220px;
     background-color: var(--primary-color);
     display: flex;
     align-items: center;

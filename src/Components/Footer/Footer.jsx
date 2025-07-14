@@ -23,7 +23,7 @@ const Footer = () => {
             <div className='footer_social_media_box'>
               <a href='https://www.facebook.com/futureitsolution.info/' target="_new" className='footer_social_media_box_icon'><FaFacebookF /></a>
               <a href='https://www.linkedin.com/company/future-it-solution/' target="_new" className='footer_social_media_box_icon'><FaLinkedinIn /></a>
-              <a href='https://www.fiverr.com/quick_devlopers'  target="_new" className='footer_social_media_box_icon'><FaInstagram /></a>
+              <a href='https://www.fiverr.com/quick_devlopers' target="_new" className='footer_social_media_box_icon'><FaInstagram /></a>
               <a href='https://www.fiverr.com/quick_devlopers' target="_new" className='footer_social_media_box_icon'><TbBrandFiverr /></a>
               <a href='https://www.upwork.com/freelancers/~01389c689555473e23?viewMode=1' target="_new" className='footer_social_media_box_icon'><SiUpwork /></a>
             </div>
@@ -32,7 +32,7 @@ const Footer = () => {
             <h2 className='quick_view'>Contact Info</h2>
             <div className="d-flex align-items-center gap-2 mb-2">
               <span className='footer_phone_icon'><MdOutlinePhoneInTalk /></span>
-              <Link href="https://wa.me/+8801727147610?text=Hello%2C%20I%20want%20to%20know%20more%20about%20your%20services?" target="new" className='footer_phone_text'>+880 178 0741 598</Link>
+              <a href="https://api.whatsapp.com/send/?phone=%2B8801780741598&text=Hello%2C+I+want+to+know+more+about+your+services%3F&type=phone_number&app_absent=0" target="_new" className='footer_phone_text'>+880 178 0741 598</a>
             </div>
             <div className="d-flex align-items-center gap-2 mb-2">
               <span className='footer_email_icon'><FaRegEnvelope /></span>

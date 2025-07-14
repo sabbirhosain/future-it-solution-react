@@ -37,7 +37,7 @@ const Navbar = () => {
               <div className="d-flex align-items-center gap-4">
                 <div className="d-flex align-items-center gap-2">
                   <span className='top_header_phone_icon'><MdWifiCalling3 /></span>
-                  <a href="https://wa.me/+8801727147610?text=Hello%2C%20I%20want%20to%20know%20more%20about%20your%20services?" target="new" className='top_header_phone_text'>+880 178 0741 598</a>
+                  <a href="https://api.whatsapp.com/send/?phone=%2B8801780741598&text=Hello%2C+I+want+to+know+more+about+your+services%3F&type=phone_number&app_absent=0" target="_new" className='top_header_phone_text'>+880 178 0741 598</a>
                 </div>
                 <div className="d-flex align-items-center gap-2">
                   <span className='top_header_email_icon'><FaEnvelope /></span>
