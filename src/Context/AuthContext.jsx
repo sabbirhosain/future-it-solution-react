@@ -48,16 +48,6 @@ const AuthContext = ({ children }) => {
         }
     };
 
-    // checkout data
-    const [selectedPackage, setSelectedPackage] = useState({});
-    const [itemDetails, setItemDetails] = useState({});
-
-    const selectPackage = (pkg, item) => {
-        setSelectedPackage(pkg);
-        setItemDetails(item);
-    };
-
-
     // our team
     const [handleError, setHandleError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -131,7 +121,7 @@ const AuthContext = ({ children }) => {
 
 
     return (
-        <AppContextProvider.Provider value={{ encryptData, decryptData, verifyToken, logOut, selectedPackage, itemDetails, selectPackage, handleError, isLoading, ourTeam, getOurTeam, handleError1, isLoading1, meetOurClient, getMeetOurClient }}>
+        <AppContextProvider.Provider value={{ encryptData, decryptData, verifyToken, logOut, handleError, isLoading, ourTeam, getOurTeam, handleError1, isLoading1, meetOurClient, getMeetOurClient }}>
             {children}
         </AppContextProvider.Provider>
     )

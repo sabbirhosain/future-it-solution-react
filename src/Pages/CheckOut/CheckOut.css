@@ -1,0 +1,22 @@
+.checkout_section {
+    width: 100%;
+    padding: 80px 0;
+}
+
+.checkout_title {
+    color: black;
+    font-size: 25px;
+    font-weight: 400;
+    font-family: var(--primary-fonts);
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.order_details_title {
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--primary-fonts);
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}

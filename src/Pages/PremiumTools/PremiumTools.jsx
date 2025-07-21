@@ -1,5 +1,5 @@
 import PremiumToolsCard from '../../Components/PremiumToolsCard/PremiumToolsCard'
-import { item_show } from '../../Context/Base_Api_Url';
+import { free_item_show } from '../../Context/Base_Api_Url';
 import { useEffect, useState } from 'react';
 import Layout from '../../Layout/Layout'
 import axios from 'axios';
@@ -8,21 +8,20 @@ import './PremiumTools.css';
 const PremiumTools = () => {
   const [handleError, setHandleError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [premiumTools, setPremiumTools] = useState({});
+  const [freeTools, setFreeTools] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const getPermiumTools = async (page) => {
+  const getFreeTools = async (page) => {
     try {
       setIsLoading(true);
       setHandleError(null);
 
-      const response = await axios.get(`${item_show}?page=${page}`);
+      const response = await axios.get(`${free_item_show}?page=${page}`);
       if (response && response.data) {
-        setPremiumTools(response.data.payload);
+        setFreeTools(response.data.payload);
         setTotalPages(response.data.pagination?.total_page || 1);
       }
-
     } catch (error) {
       console.log(error.message);
       setHandleError(error.response.data || "Something went wrong");
@@ -31,7 +30,7 @@ const PremiumTools = () => {
     }
   }
 
-  useEffect(() => { getPermiumTools(currentPage) }, [currentPage]);
+  useEffect(() => { getFreeTools(currentPage) }, [currentPage]);
   const handlePrevPage = () => { if (currentPage > 1) { setCurrentPage(prev => prev - 1) } }
   const handleNextPage = () => { if (currentPage < totalPages) { setCurrentPage(prev => prev + 1) } }
 
@@ -44,13 +43,13 @@ const PremiumTools = () => {
   }
 
   return (
-    <Layout title='Premium Tools'>
+    <Layout>
       <section className='premium_tools_section'>
         <div className="container">
 
-          {premiumTools?.length > 0 ? (
+          {freeTools?.length > 0 ? (
             <div className="row">
-              {premiumTools.map((item, index) => (<PremiumToolsCard key={index} item={item} />))}
+              {freeTools.map((item, index) => (<PremiumToolsCard key={index} item={item} />))}
             </div>
           ) : (
             <div className="text-center py-5">

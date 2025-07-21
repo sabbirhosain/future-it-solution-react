@@ -25,6 +25,7 @@ import { ToastContainer } from "react-toastify"
 import { ProtectedRoute, useAppContextProvider } from "./Context/AuthContext"
 import axios from "axios"
 import "./App.css"
+import FreeCheckOut from "./Pages/CheckOut/FreeCheckOut"
 
 
 const App = () => {
@@ -48,6 +49,8 @@ const App = () => {
         <Route path="/project" element={<Project />} />
         <Route path="/premium-tools" element={<PremiumTools />} />
         <Route path="/premium-tools/:id" element={<PremiumToolsDetails />} />
+        <Route path="/premium-tools/checkout/:id" element={<FreeCheckOut />} />
+        <Route path="/premium-tools/order-confirm/:id" element={<OrderConfirm />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />

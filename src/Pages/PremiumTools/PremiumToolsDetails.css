@@ -59,9 +59,21 @@
     margin-bottom: 10px;
 }
 
-.tools_details_packages {
-    width: 100%;
-    padding: 20px 0 50px 0;
+.tools_details_order_btn {
+    color: white;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: var(--primary-fonts);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    background-color: var(--primary-color);
+    padding: 8px 16px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .tools_details_description {
