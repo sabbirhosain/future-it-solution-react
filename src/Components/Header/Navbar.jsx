@@ -85,7 +85,7 @@ const Navbar = () => {
                 <NavLink to="/project" className='nav-link nav_link'>Project</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/premium-tools" className='nav-link nav_link'>Free Tools</NavLink>
+                <NavLink to="/free-tools" className='nav-link nav_link'>Free Tools</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink to="/contact" className='nav-link nav_link'>Contact</NavLink>

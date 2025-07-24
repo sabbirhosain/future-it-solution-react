@@ -1,9 +1,9 @@
 import Layout from '../../Layout/Layout'
 import { VscTools } from "react-icons/vsc";
-import { SiGooglemeet } from "react-icons/si";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { HiMiniArrowSmallUp } from "react-icons/hi2";
+import { RiToolsLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import bgImage from '../../assets/hero.webp';
 import chooseUs1 from '../../assets/choose-us/image1.svg';
@@ -44,8 +44,8 @@ const Home = () => {
               <h2 className='hero_heading'><span className='hero_heading_highlight'>Professional</span> team will take you to <span className='hero_heading_highlight'> the next </span> level<span className='hero_heading_highlight'>.</span></h2>
               <p className='hero_peragraph'>Our professional team is ready to take your business to the next level. Are you ready to grow?</p>
               <div className='d-flex align-items-center gap-3'>
-                <Link to='/' className='hero_section_btn'><SiGooglemeet />Google Meeting</Link>
-                <Link to='/premium-tools' className='hero_section_btn'><VscTools />Premium Tools</Link>
+                <Link to='/free-tools' className='hero_section_btn'><RiToolsLine />Free Tools</Link>
+                <Link to='https://www.premiumtoolskit.shop/premium-tools' className='hero_section_btn'><VscTools />Premium Tools</Link>
               </div>
             </div>
             <div className="col-md-6 order-1 order-md-2 mb-5 mb-md-0">
