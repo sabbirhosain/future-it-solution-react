@@ -1,10 +1,10 @@
-import Layout from '../../Layout/Layout'
-import React, { useEffect, useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import { appointment_create } from "../../Context/Base_Api_Url";
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import 'react-calendar/dist/Calendar.css';
+import Layout from '../../Layout/Layout'
+import Calendar from 'react-calendar';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 import './Appointment.css'
 
 const Appointment = () => {
@@ -33,7 +33,6 @@ const Appointment = () => {
     // Parse selected time and timezone
     const [time, modifier] = meeting_time.split(' ');
     let [hours, minutes] = time.split(':').map(Number);
-
     if (modifier === 'PM' && hours !== 12) hours += 12;
     if (modifier === 'AM' && hours === 12) hours = 0;
 

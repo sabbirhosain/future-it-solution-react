@@ -36,12 +36,13 @@ const AuthContext = ({ children }) => {
     // Verify JWT token validity
     const verifyToken = async (token) => {
         try {
+            
             if (!token) return false;
-            const response = await axios.post(verify_token, { token: token });
-
+            const response = await axios.post(verify_token, { accessToken: token });
             if (response && response.data) {
-                return response.data.isValid;
+                return response.data.success;
             }
+
         } catch (error) {
             console.error('Token verification failed:', error);
             return false;
