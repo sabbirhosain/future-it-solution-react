@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import CryptoJS from 'crypto-js';
 import { Outlet, Navigate, useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
 import { verify_token } from './Base_Api_Url';
+import CryptoJS from 'crypto-js';
+import axios from 'axios';
 
 const AppContextProvider = createContext()
 const AuthContext = ({ children }) => {
@@ -36,7 +36,7 @@ const AuthContext = ({ children }) => {
     // Verify JWT token validity
     const verifyToken = async (token) => {
         try {
-            
+
             if (!token) return false;
             const response = await axios.post(verify_token, { accessToken: token });
             if (response && response.data) {
